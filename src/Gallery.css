@@ -184,11 +184,16 @@
   align-items: center;
   justify-content: center;
 
+  padding: 0;
+
   border: 1px solid rgba(248, 247, 243, 0.5);
+  background: transparent;
 
   color: #f8f7f3;
 
   font-size: 20px;
+
+  cursor: pointer;
 
   transform: translateY(15px);
 
@@ -206,6 +211,153 @@
   background: #f8f7f3;
   color: #0b1020;
 }
+
+
+/* =========================
+   IMAGE LIGHTBOX
+========================= */
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: rgba(11, 16, 32, 0.95);
+
+  animation: galleryFadeIn 0.3s ease;
+}
+
+.gallery-lightbox img {
+  display: block;
+
+  max-width: 90%;
+  max-height: 85vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 4px;
+
+  animation: galleryImageIn 0.35s ease;
+}
+
+
+/* =========================
+   LIGHTBOX CLOSE BUTTON
+========================= */
+
+.gallery-close {
+  position: absolute;
+
+  top: 25px;
+  right: 30px;
+
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(248, 247, 243, 0.5);
+  background: transparent;
+
+  color: #f8f7f3;
+
+  font-size: 32px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.gallery-close:hover {
+  background: #f8f7f3;
+  color: #0b1020;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================
+   LIGHTBOX INFORMATION
+========================= */
+
+.gallery-lightbox-info {
+  position: absolute;
+
+  left: 40px;
+  bottom: 35px;
+
+  color: #f8f7f3;
+}
+
+.gallery-lightbox-info span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #c9a96e;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.gallery-lightbox-info h3 {
+  margin: 0;
+
+  color: #f8f7f3;
+
+  font-size: 28px;
+  font-weight: 400;
+}
+
+
+/* =========================
+   LIGHTBOX ANIMATIONS
+========================= */
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes galleryImageIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 /* =========================
    TABLET
@@ -252,6 +404,7 @@
     opacity: 1;
   }
 }
+
 
 /* =========================
    MOBILE
@@ -314,6 +467,43 @@
   .gallery-arrow {
     width: 40px;
     height: 40px;
+
     font-size: 18px;
+  }
+
+
+  /* Mobile Lightbox */
+
+  .gallery-lightbox {
+    padding: 20px;
+  }
+
+  .gallery-lightbox img {
+    max-width: 95%;
+    max-height: 75vh;
+  }
+
+  .gallery-close {
+    top: 15px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 28px;
+  }
+
+  .gallery-lightbox-info {
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .gallery-lightbox-info h3 {
+    font-size: 22px;
+  }
+
+  .gallery-lightbox-info span {
+    font-size: 9px;
+    letter-spacing: 2px;
   }
 }

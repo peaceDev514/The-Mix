@@ -1,5 +1,5 @@
 import "./About.css";
-import food from "./assets/food6.png";
+import aboutImg from "./assets/about.jpg";
 
 function About() {
   return (
@@ -17,7 +17,7 @@ function About() {
           </h2>
 
           <p>
-            At TableMannas, we bring together quality ingredients,
+            At The Mix, we bring together quality ingredients,
             delicious flavours, and warm hospitality to create an
             experience worth coming back for.
           </p>
@@ -79,8 +79,8 @@ function About() {
 
         <div className="about-image">
           <img
-            src={food}
-            alt="TableMannas restaurant"
+            src={aboutImg}
+            alt="The Mix restaurant"
           />
         </div>
 

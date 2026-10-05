@@ -1,13 +1,16 @@
+import { useState } from "react";
 import "./Gallery.css";
 
 import food1 from "./assets/food4.png";
 import food2 from "./assets/food6.png";
 import food3 from "./assets/food7.png";
-import food4 from "./assets/food2.png";
+import food4 from "./assets/about.jpg";
 import food5 from "./assets/food.png";
-import food6 from "./assets/food3.png";
+import food6 from "./assets/dining.jpg";
 
 function Gallery() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const images = [
     {
       image: food1,
@@ -84,13 +87,47 @@ function Gallery() {
                 <h3>{item.title}</h3>
               </div>
 
-              <div className="gallery-arrow">
+              <button
+                className="gallery-arrow"
+                onClick={() => setSelectedImage(item)}
+                aria-label={`View ${item.title}`}
+              >
                 ↗
-              </div>
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Image Lightbox */}
+      {selectedImage && (
+        <div
+          className="gallery-lightbox"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="gallery-close"
+            onClick={() => setSelectedImage(null)}
+            aria-label="Close image"
+          >
+            ×
+          </button>
+
+          <img
+            src={selectedImage.image}
+            alt={selectedImage.title}
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <div
+            className="gallery-lightbox-info"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span>{selectedImage.category}</span>
+            <h3>{selectedImage.title}</h3>
+          </div>
+        </div>
+      )}
 
     </section>
   );
