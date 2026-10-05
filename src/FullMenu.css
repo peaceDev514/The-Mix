@@ -1,104 +1,99 @@
 .full-menu-page {
   min-height: 100vh;
-  background: #f4f0e8;
-  color: #0b1020;
+  background: #fffaf3;
+  color: #171717;
 }
-
 
 /* =========================
    HERO
 ========================= */
 
 .full-menu-hero {
-  min-height: 560px;
-  padding: 40px 6% 90px;
-
-  display: flex;
-  align-items: flex-end;
-
+  position: relative;
+  overflow: hidden;
+  padding: 110px 6% 100px;
   background:
-    linear-gradient(
-      rgba(5, 8, 17, 0.72),
-      rgba(5, 8, 17, 0.82)
-    ),
-    url("../assets/menu-hero.jpg");
+    radial-gradient(circle at 85% 20%, rgba(255, 166, 0, 0.25), transparent 28%),
+    radial-gradient(circle at 10% 90%, rgba(239, 68, 68, 0.18), transparent 30%),
+    linear-gradient(135deg, #fff2d8, #fffaf3 55%, #ffe7c2);
+}
 
-  background-size: cover;
-  background-position: center;
+.full-menu-hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 132, 0, 0.12);
+  top: -140px;
+  right: -80px;
 }
 
 .full-menu-hero-content {
-  width: 100%;
-  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
   margin: 0 auto;
-
-  color: #f8f7f3;
+  text-align: center;
 }
 
 .menu-back {
-  display: inline-block;
-  margin-bottom: 100px;
-
-  color: #c9a96e;
+  display: inline-flex;
+  margin-bottom: 45px;
+  color: #333;
   text-decoration: none;
-
-  font-size: 12px;
-  letter-spacing: 1px;
-
-  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: 0.25s ease;
 }
 
 .menu-back:hover {
-  color: #f8f7f3;
+  color: #e4572e;
+  transform: translateX(-4px);
 }
 
 .full-menu-label {
-  display: block;
-
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: #e4572e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
   margin-bottom: 20px;
-
-  color: #c9a96e;
-
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
 }
 
 .full-menu-hero h1 {
-  margin: 0 0 25px;
-
-  font-size: clamp(5rem, 12vw, 10rem);
-  line-height: 0.8;
-  font-weight: 400;
-  letter-spacing: -6px;
+  margin: 0;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -5px;
+  font-weight: 900;
 }
 
 .full-menu-hero h1 span {
-  color: #c9a96e;
+  color: #e4572e;
   font-style: italic;
 }
 
 .full-menu-hero p {
-  max-width: 480px;
-  margin: 0;
-
-  color: #c7c9ce;
-
-  font-size: 15px;
+  max-width: 620px;
+  margin: 30px auto 0;
+  font-size: 1.05rem;
   line-height: 1.8;
+  color: #666;
 }
-
 
 /* =========================
    CONTENT
 ========================= */
 
 .full-menu-content {
-  max-width: 1200px;
+  width: min(1200px, 90%);
   margin: 0 auto;
-  padding: 90px 6%;
+  padding: 70px 0 100px;
 }
-
 
 /* =========================
    SEARCH
@@ -106,55 +101,49 @@
 
 .menu-search-wrapper {
   display: flex;
-  justify-content: flex-end;
-
+  justify-content: center;
   margin-bottom: 45px;
 }
 
 .menu-search {
-  width: 350px;
-
+  width: min(650px, 100%);
   display: flex;
   align-items: center;
   gap: 12px;
-
-  padding: 14px 0;
-
-  border-bottom: 1px solid #bdb8ad;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #eadfd1;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(67, 43, 20, 0.07);
 }
 
-.menu-search > span {
-  color: #b88a44;
-  font-size: 22px;
+.search-icon {
+  font-size: 1.5rem;
+  color: #e4572e;
 }
 
 .menu-search input {
   flex: 1;
-
   border: none;
   outline: none;
   background: transparent;
-
-  color: #0b1020;
-
-  font-family: inherit;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #222;
 }
 
 .menu-search input::placeholder {
-  color: #85827c;
+  color: #999;
 }
 
 .menu-search button {
+  width: 32px;
+  height: 32px;
   border: none;
-  background: transparent;
-
-  color: #0b1020;
-
-  font-size: 22px;
+  border-radius: 50%;
+  background: #f4eee6;
   cursor: pointer;
+  font-size: 1.2rem;
 }
-
 
 /* =========================
    CATEGORY NAV
@@ -162,372 +151,296 @@
 
 .menu-category-nav {
   display: flex;
-  flex-wrap: wrap;
-
   gap: 10px;
-
-  margin-bottom: 100px;
-  padding-bottom: 25px;
-
-  border-bottom: 1px solid #d5d0c6;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 70px;
 }
 
 .menu-category-nav a {
-  padding: 10px 16px;
-
-  border: 1px solid #d1ccc1;
-
-  color: #5d5a55;
-
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 16px;
+  border-radius: 50px;
+  background: #fff;
+  border: 1px solid #eadfd1;
+  color: #333;
   text-decoration: none;
-
-  font-size: 11px;
-  letter-spacing: 0.5px;
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: 0.25s ease;
 }
 
 .menu-category-nav a:hover {
-  background: #0b1020;
-  border-color: #0b1020;
-
-  color: #f8f7f3;
+  background: #e4572e;
+  border-color: #e4572e;
+  color: #fff;
+  transform: translateY(-3px);
 }
-
 
 /* =========================
    CATEGORY
 ========================= */
 
 .full-menu-category {
-  margin-bottom: 110px;
+  margin-bottom: 80px;
   scroll-margin-top: 30px;
 }
 
 .category-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.category-icon {
+  width: 68px;
+  height: 68px;
   display: grid;
-  grid-template-columns: 70px 1fr;
-  gap: 25px;
-
-  margin-bottom: 45px;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e4572e, #f7a325);
+  font-size: 2rem;
+  box-shadow: 0 12px 25px rgba(228, 87, 46, 0.2);
 }
 
-.category-heading > span {
-  color: #c9a96e;
-
-  font-size: 12px;
-  letter-spacing: 2px;
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.category-heading p {
-  margin: 0 0 10px;
-
-  color: #b88a44;
-
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+.category-title > span {
+  color: #e4572e;
+  font-size: 0.8rem;
+  font-weight: 900;
 }
 
-.category-heading h2 {
+.category-title p {
+  margin: 0 0 4px;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.category-title h2 {
   margin: 0;
-
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  line-height: 0.95;
-  font-weight: 400;
-  letter-spacing: -2px;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  letter-spacing: -1px;
 }
-
 
 /* =========================
-   MENU ITEMS
+   MENU LIST
 ========================= */
 
 .menu-list {
-  border-top: 1px solid #cfc9bd;
+  background: #fff;
+  border: 1px solid #eee2d4;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(60, 35, 15, 0.06);
 }
 
 .full-menu-item {
-  min-height: 70px;
-
+  min-height: 68px;
   display: flex;
   align-items: center;
+  gap: 15px;
+  padding: 17px 25px;
+  border-bottom: 1px dashed #e8ded2;
+  transition: 0.2s ease;
+}
 
-  gap: 20px;
+.full-menu-item:last-child {
+  border-bottom: none;
+}
 
-  padding: 20px 0;
-
-  border-bottom: 1px solid #d8d2c7;
+.full-menu-item:hover {
+  background: #fff7ed;
+  padding-left: 30px;
 }
 
 .full-menu-item h3 {
   margin: 0;
-
-  color: #24262d;
-
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 0.98rem;
+  font-weight: 700;
 }
 
 .menu-dots {
   flex: 1;
-
-  height: 1px;
-
-  background: repeating-linear-gradient(
-    to right,
-    #c5c0b6 0,
-    #c5c0b6 2px,
-    transparent 2px,
-    transparent 7px
-  );
+  border-bottom: 2px dotted #d9cec1;
+  min-width: 20px;
 }
 
 .full-menu-item > span {
-  min-width: 140px;
-
-  color: #a87531;
-
-  text-align: right;
-
-  font-size: 14px;
-  font-weight: 500;
-
+  flex-shrink: 0;
+  color: #e4572e;
+  font-size: 0.95rem;
+  font-weight: 900;
   white-space: nowrap;
 }
-
 
 /* =========================
    NO RESULTS
 ========================= */
 
 .no-results {
-  padding: 100px 0;
-
+  padding: 100px 20px;
   text-align: center;
 }
 
 .no-results > span {
-  color: #b88a44;
-
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-size: 3rem;
 }
 
 .no-results h2 {
   margin: 20px 0 30px;
-
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 400;
+  font-size: 2rem;
 }
 
 .no-results button {
-  padding: 14px 25px;
-
   border: none;
-
-  background: #0b1020;
-  color: #f8f7f3;
-
+  padding: 14px 22px;
+  border-radius: 50px;
+  background: #e4572e;
+  color: #fff;
+  font-weight: 700;
   cursor: pointer;
-
-  font-family: inherit;
 }
-
 
 /* =========================
    CTA
 ========================= */
 
 .menu-cta {
-  padding: 120px 6%;
-
-  background: #0b1020;
-
-  color: #f8f7f3;
-
+  position: relative;
+  overflow: hidden;
+  padding: 110px 6%;
   text-align: center;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(255, 174, 0, 0.3), transparent 25%),
+    radial-gradient(circle at 85% 70%, rgba(239, 68, 68, 0.25), transparent 25%),
+    #21150f;
+  color: #fff;
 }
 
 .menu-cta > span {
-  color: #c9a96e;
-
-  font-size: 11px;
-  letter-spacing: 4px;
+  color: #ffb347;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .menu-cta h2 {
-  margin: 25px 0 40px;
-
-  font-size: clamp(3rem, 7vw, 6rem);
-  line-height: 0.9;
-  font-weight: 400;
+  margin: 18px 0 30px;
+  font-size: clamp(2.7rem, 7vw, 5.5rem);
+  line-height: 0.95;
   letter-spacing: -3px;
 }
 
 .menu-cta h2 em {
-  color: #c9a96e;
+  color: #ff9d4d;
 }
 
-.menu-cta a {
-  display: inline-block;
-
-  padding: 15px 30px;
-
-  border: 1px solid #c9a96e;
-
-  color: #f8f7f3;
-
+.get-in-touch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 27px;
+  border-radius: 50px;
+  background: #e4572e;
+  color: #fff;
   text-decoration: none;
-
-  font-size: 12px;
-
-  transition: 0.3s ease;
+  font-weight: 800;
+  transition: 0.25s ease;
 }
 
-.menu-cta a:hover {
-  background: #c9a96e;
-  color: #0b1020;
+.get-in-touch:hover {
+  background: #f27a31;
+  transform: translateY(-3px);
 }
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 800px) {
-
-  .full-menu-hero {
-    min-height: 500px;
-    padding: 35px 5% 70px;
-  }
-
-  .menu-back {
-    margin-bottom: 80px;
-  }
-
-  .full-menu-content {
-    padding: 70px 5%;
-  }
-
-  .menu-category-nav {
-    margin-bottom: 70px;
-  }
-
-  .full-menu-category {
-    margin-bottom: 80px;
-  }
-}
-
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
-
+@media (max-width: 700px) {
   .full-menu-hero {
-    min-height: 470px;
-
-    padding: 30px 6% 60px;
-
-    background-position: center;
-  }
-
-  .menu-back {
-    margin-bottom: 80px;
-  }
-
-  .full-menu-label {
-    font-size: 9px;
-    letter-spacing: 3px;
+    padding: 80px 5% 70px;
   }
 
   .full-menu-hero h1 {
-    font-size: 4.8rem;
-    letter-spacing: -4px;
-  }
-
-  .full-menu-hero p {
-    font-size: 14px;
+    letter-spacing: -3px;
   }
 
   .full-menu-content {
-    padding: 60px 6%;
-  }
-
-  .menu-search-wrapper {
-    margin-bottom: 30px;
-  }
-
-  .menu-search {
-    width: 100%;
+    width: 92%;
+    padding-top: 50px;
   }
 
   .menu-category-nav {
-    gap: 7px;
-    margin-bottom: 60px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
   }
 
   .menu-category-nav a {
-    padding: 9px 11px;
-    font-size: 10px;
+    flex-shrink: 0;
   }
 
   .category-heading {
-    grid-template-columns: 35px 1fr;
-    gap: 12px;
-
-    margin-bottom: 30px;
+    align-items: flex-start;
   }
 
-  .category-heading h2 {
-    font-size: 2.6rem;
+  .category-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+    border-radius: 16px;
   }
 
-  .category-heading p {
-    font-size: 9px;
-    letter-spacing: 2px;
+  .category-title {
+    gap: 8px;
   }
 
-  .full-menu-category {
-    margin-bottom: 70px;
+  .category-title h2 {
+    font-size: 1.55rem;
+  }
+
+  .category-title p {
+    font-size: 0.75rem;
   }
 
   .full-menu-item {
-    min-height: 65px;
+    padding: 16px;
     gap: 10px;
-    padding: 17px 0;
+  }
+
+  .full-menu-item:hover {
+    padding-left: 16px;
   }
 
   .full-menu-item h3 {
-    font-size: 14px;
+    font-size: 0.88rem;
   }
 
   .full-menu-item > span {
-    min-width: auto;
-    font-size: 12px;
+    font-size: 0.85rem;
   }
 
   .menu-dots {
-    min-width: 15px;
+    min-width: 10px;
   }
 
   .menu-cta {
-    padding: 90px 6%;
+    padding: 80px 6%;
   }
 
   .menu-cta h2 {
-    font-size: 3.5rem;
-  }
-
-  .no-results h2 {
-    font-size: 2.3rem;
+    letter-spacing: -2px;
   }
 }

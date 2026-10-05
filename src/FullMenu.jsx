@@ -7,6 +7,7 @@ const menuCategories = [
     id: "food",
     title: "Food Menu",
     subtitle: "Traditional favourites & everyday meals",
+    emoji: "🍛",
     items: [
       ["Jollof Rice", "₦500"],
       ["Fried Rice", "₦500"],
@@ -24,8 +25,13 @@ const menuCategories = [
       ["Plantain", "₦400"],
       ["Beef", "₦700"],
       ["Fish", "₦1,200"],
-      ["Chicken", "₦1,000 / ₦2,000 / ₦3,000"],
-      ["Turkey", "₦3,500 / ₦4,000 / ₦4,500 / ₦6,000"],
+      ["Chicken", "₦1,000"],
+      ["Chicken", "₦2,000"],
+      ["Chicken", "₦3,000"],
+      ["Turkey", "₦3,500"],
+      ["Turkey", "₦4,000"],
+      ["Turkey", "₦4,500"],
+      ["Turkey", "₦6,000"],
       ["Ponmo", "₦500"],
       ["Moinmoin", "₦500"],
       ["Salad", "₦700"],
@@ -41,10 +47,11 @@ const menuCategories = [
     id: "pepper-soup",
     title: "Pepper Soup",
     subtitle: "Rich, spicy & freshly prepared",
+    emoji: "🌶️",
     items: [
       ["Catfish Pepper Soup", "₦7,000 / ₦10,000"],
       ["Beef Pepper Soup", "₦5,000 / ₦7,000"],
-      ["Chicken Pepper Soup", "₦5,000 / ₦7,000"],
+      ["Chicken Pepper Soup", "₦5,000 / ₦70,000"],
       ["Turkey Pepper Soup", "₦5,300 / ₦10,000"],
       ["Goat Meat Pepper Soup", "₦5,300 / ₦8,000"],
     ],
@@ -52,56 +59,62 @@ const menuCategories = [
 
   {
     id: "swallow",
-    title: "Swallow & Soups",
-    subtitle: "Classic Nigerian combinations",
+    title: "Swallow Menu",
+    subtitle: "Classic Nigerian swallow combinations",
+    emoji: "🥣",
     items: [
-      ["Semo + Beef", "₦2,700"],
-      ["Pando + Beef", "₦2,700"],
-      ["Eba + Beef", "₦2,700"],
-      ["Amala + Beef", "₦2,700"],
-      ["Swallow + Fish", "₦3,000"],
-      ["Swallow + Chicken", "₦4,000"],
-      ["Swallow + Turkey", "₦5,500 / ₦6,000"],
-      ["Egusi Soup — 1 Litre", "₦6,000"],
-      ["Vegetable Soup — 1 Litre", "₦6,000"],
-      ["Okro Soup — 1 Litre", "₦10,000"],
+      ["Swallow", "Semo / Pando / Eba / Amala"],
+      ["Soup", "Egusi / Vegetable / Okra"],
+      ["A Plate of Swallow with Beef", "₦2,700"],
+      ["A Plate of Swallow with Fish", "₦3,000"],
+      ["A Plate of Swallow with Chicken", "₦4,000"],
+      ["A Plate of Swallow with Turkey", "₦5,500 / ₦6,000"],
+      ["1 Litre of Vegetable Soup", "₦6,000"],
+      ["1 Litre of Egusi Soup", "₦6,000"],
+      ["1 Litre of Okro Soup", "₦10,000"],
     ],
   },
 
   {
     id: "shawarma",
-    title: "Shawarma",
+    title: "Shawarma Menu",
     subtitle: "Freshly prepared & generously filled",
+    emoji: "🌯",
     items: [
       ["Double Sausage", "₦3,000"],
       ["Single Sausage", "₦2,800"],
       ["No Sausage", "₦2,600"],
-      ["Double Sausage + Extra Beef", "₦3,500"],
-      ["No Sausage + Extra Beef", "₦3,100"],
-      ["Shawarma + Grilled Chicken", "₦3,500"],
+      ["Double Sausage with Extra Beef", "₦3,500"],
+      ["No Sausage with Extra Beef", "₦3,100"],
+      ["Shawarma with Grilled Chicken", "₦3,500"],
     ],
   },
 
   {
     id: "bread",
-    title: "Bread & Bakery",
+    title: "Bread Menu",
     subtitle: "Freshly baked favourites",
+    emoji: "🍞",
     items: [
       ["Butter Bread", "₦1,000"],
-      ["Small Butter Bread", "₦600"],
+      ["Butter Bread — Small Size", "₦600"],
       ["Fruit Bread", "₦1,200"],
-      ["Chocolate Bread", "₦1,000 / ₦1,500"],
-      ["Sardine Bread", "₦1,000 / ₦1,500"],
+      ["Chocolate Bread", "₦1,000"],
+      ["Chocolate Bread", "₦1,500"],
+      ["Sardine Bread", "₦1,000"],
+      ["Sardine Bread", "₦1,500"],
       ["Banana Bread", "₦2,000"],
-      ["Coconut Bread", "₦1,000 / ₦1,500"],
+      ["Coconut Bread", "₦1,000"],
+      ["Coconut Bread", "₦1,500"],
       ["Burger", "₦3,500 / ₦5,000"],
     ],
   },
 
   {
     id: "snacks",
-    title: "Snacks",
+    title: "Snacks Menu",
     subtitle: "Perfect for a quick bite",
+    emoji: "🥐",
     items: [
       ["Egg Roll", "₦700"],
       ["Doughnut", "₦600"],
@@ -113,7 +126,8 @@ const menuCategories = [
       ["Chicken Pie", "₦1,200"],
       ["Egg Burger", "₦1,000"],
       ["Croissant", "₦700"],
-      ["Cookies", "₦1,500 / ₦2,000"],
+      ["Cookies", "₦1,500"],
+      ["Cookies", "₦2,000"],
       ["Honey Roll", "₦700"],
       ["Pancake", "₦700"],
       ["Chinchin", "₦500"],
@@ -123,8 +137,9 @@ const menuCategories = [
 
   {
     id: "cakes",
-    title: "Cakes",
+    title: "Cake Menu",
     subtitle: "Sweet treats for every occasion",
+    emoji: "🍰",
     items: [
       ["Fruit Cake", "₦1,500"],
       ["Banana Cake", "₦1,500"],
@@ -138,8 +153,9 @@ const menuCategories = [
 
   {
     id: "ice-cream",
-    title: "Ice Cream",
+    title: "Ice Cream Menu",
     subtitle: "Cool, creamy & delicious",
+    emoji: "🍦",
     items: [
       ["Sachet Ice Cream", "₦500"],
       ["120ml", "₦750"],
@@ -157,8 +173,9 @@ const menuCategories = [
 
   {
     id: "pizza",
-    title: "Pizza",
+    title: "Pizza Menu",
     subtitle: "Freshly baked & made to order",
+    emoji: "🍕",
     items: [
       ["Small Pizza", "₦4,000"],
       ["Medium Pizza", "₦6,000"],
@@ -170,6 +187,7 @@ const menuCategories = [
     id: "drinks",
     title: "Restaurant Drinks",
     subtitle: "Refreshing drinks & beverages",
+    emoji: "🥤",
     items: [
       ["Big Hollandia Yoghurt", "₦2,500"],
       ["Big Exotic", "₦2,500"],
@@ -196,7 +214,8 @@ const menuCategories = [
       ["Viju Chocolate", "₦1,500"],
       ["Viju Milk", "₦800"],
       ["Nutri Milk", "₦800"],
-      ["Zobo", "₦500 / ₦1,000"],
+      ["Zobo", "₦500"],
+      ["Zobo", "₦1,000"],
       ["Smoove", "₦600"],
       ["Sprite", "₦600"],
     ],
@@ -209,15 +228,13 @@ function FullMenu() {
   const filteredCategories = useMemo(() => {
     const query = search.trim().toLowerCase();
 
-    if (!query) {
-      return menuCategories;
-    }
+    if (!query) return menuCategories;
 
     return menuCategories
       .map((category) => ({
         ...category,
-        items: category.items.filter(([name]) =>
-          name.toLowerCase().includes(query)
+        items: category.items.filter(([name, price]) =>
+          `${name} ${price}`.toLowerCase().includes(query)
         ),
       }))
       .filter((category) => category.items.length > 0);
@@ -226,40 +243,34 @@ function FullMenu() {
   return (
     <main className="full-menu-page">
 
-      {/* HERO */}
       <section className="full-menu-hero">
         <div className="full-menu-hero-content">
 
-          <a href="/" className="menu-back">
+          <Link to="/" className="menu-back">
             ← Back to Home
-          </a>
+          </Link>
 
           <span className="full-menu-label">
-            The Mix
+            TABLE MAMAS
           </span>
 
           <h1>
-            Our
-            <span> Menu</span>
+            Our <span>Menu</span>
           </h1>
 
           <p>
-            Discover our selection of freshly prepared meals,
-            delicious treats and refreshing drinks.
+            Delicious meals, freshly prepared favourites,
+            sweet treats and refreshing drinks.
           </p>
 
         </div>
       </section>
 
-
-      {/* MENU CONTENT */}
       <section className="full-menu-content">
 
-        {/* SEARCH */}
         <div className="menu-search-wrapper">
-
           <div className="menu-search">
-            <span>⌕</span>
+            <span className="search-icon">⌕</span>
 
             <input
               type="text"
@@ -277,26 +288,19 @@ function FullMenu() {
               </button>
             )}
           </div>
-
         </div>
 
-
-        {/* CATEGORY NAVIGATION */}
         {!search && (
           <nav className="menu-category-nav">
             {menuCategories.map((category) => (
-              <a
-                href={`#${category.id}`}
-                key={category.id}
-              >
+              <a href={`#${category.id}`} key={category.id}>
+                <span>{category.emoji}</span>
                 {category.title}
               </a>
             ))}
           </nav>
         )}
 
-
-        {/* MENU SECTIONS */}
         <div className="full-menu-list">
 
           {filteredCategories.length > 0 ? (
@@ -309,32 +313,35 @@ function FullMenu() {
 
                 <div className="category-heading">
 
-                  <span>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <div className="category-icon">
+                    {category.emoji}
+                  </div>
 
-                  <div>
-                    <p>{category.subtitle}</p>
-                    <h2>{category.title}</h2>
+                  <div className="category-title">
+                    <span>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <div>
+                      <p>{category.subtitle}</p>
+                      <h2>{category.title}</h2>
+                    </div>
                   </div>
 
                 </div>
 
-
                 <div className="menu-list">
 
-                  {category.items.map(([name, price]) => (
+                  {category.items.map(([name, price], itemIndex) => (
                     <div
                       className="full-menu-item"
-                      key={`${category.id}-${name}-${price}`}
+                      key={`${category.id}-${name}-${price}-${itemIndex}`}
                     >
-
                       <h3>{name}</h3>
 
-                      <div className="menu-dots"></div>
+                      <div className="menu-dots" />
 
                       <span>{price}</span>
-
                     </div>
                   ))}
 
@@ -344,7 +351,7 @@ function FullMenu() {
             ))
           ) : (
             <div className="no-results">
-              <span>Nothing Found</span>
+              <span>🔎</span>
 
               <h2>
                 No menu item matches
@@ -359,14 +366,10 @@ function FullMenu() {
           )}
 
         </div>
-
       </section>
 
-
-      {/* BOTTOM CTA */}
       <section className="menu-cta">
-
-        <span>Ready to order?</span>
+        <span>Hungry already?</span>
 
         <h2>
           Good food is
@@ -375,9 +378,8 @@ function FullMenu() {
         </h2>
 
         <Link to="/#contact" className="get-in-touch">
-	    Get in Touch
-	  </Link>
-
+          Get in Touch
+        </Link>
       </section>
 
     </main>
