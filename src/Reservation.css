@@ -1,0 +1,207 @@
+.reservation {
+  position: relative;
+
+  width: 100%;
+  min-height: 650px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 100px 6%;
+
+  background-size: cover;
+  background-position: center;
+
+  overflow: hidden;
+}
+
+
+/* Dark overlay */
+
+.reservation-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(5, 8, 17, 0.68);
+}
+
+
+/* Content */
+
+.reservation-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 750px;
+
+  text-align: center;
+
+  color: #F8F7F3;
+}
+
+
+/* Small label */
+
+.reservation-label {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  color: #C9A96E;
+}
+
+
+/* Heading */
+
+.reservation-content h2 {
+  margin: 0 0 25px;
+
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 0.9;
+  font-weight: 500;
+}
+
+
+/* Description */
+
+.reservation-text {
+  max-width: 520px;
+
+  margin: 0 auto 50px;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: #D2D4DA;
+}
+
+
+/* Opening hours */
+
+.opening-hours {
+  max-width: 600px;
+
+  margin: 0 auto 45px;
+
+  padding: 25px 0;
+
+  border-top: 1px solid rgba(248, 247, 243, 0.25);
+  border-bottom: 1px solid rgba(248, 247, 243, 0.25);
+}
+
+.hours-title {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: #C9A96E;
+}
+
+.hours-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 12px;
+
+  font-size: 14px;
+
+  color: #E5E5E5;
+}
+
+.hours-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Button */
+
+.reservation-button {
+  display: inline-block;
+
+  padding: 15px 34px;
+
+  background: #C9A96E;
+  color: #0B1020;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  transition: 0.3s ease;
+}
+
+.reservation-button:hover {
+  background: #F8F7F3;
+}
+
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+  .reservation {
+    min-height: 600px;
+
+    padding: 90px 6%;
+  }
+
+  .reservation-content h2 {
+    font-size: clamp(3.2rem, 13vw, 5rem);
+  }
+
+  .reservation-text {
+    font-size: 15px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+  .reservation {
+    min-height: 650px;
+
+    padding: 80px 6%;
+
+    background-position: center;
+  }
+
+  .reservation-content h2 {
+    font-size: 3.4rem;
+  }
+
+  .hours-row {
+    flex-direction: column;
+
+    gap: 5px;
+
+    text-align: center;
+  }
+
+  .hours-row span:last-child {
+    color: #C9A96E;
+  }
+
+  .reservation-button {
+    width: 100%;
+
+    text-align: center;
+  }
+
+}
