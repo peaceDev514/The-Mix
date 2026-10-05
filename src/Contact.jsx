@@ -9,7 +9,7 @@ function Contact() {
     message: "",
   });
 
-  const whatsappNumber = "2349053028137";
+  const whatsappNumber = "2349011445400";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +45,7 @@ ${formData.message}
 
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Hello TableMannas, I would like to make an enquiry."
+      "Hello The Mix, I would like to make an enquiry."
     );
 
     window.open(
