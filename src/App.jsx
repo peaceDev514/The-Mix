@@ -48,6 +48,14 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
+   useEffect(() => {
+  document.body.style.overflow = loading ? "hidden" : "auto";
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [loading]);
+
 
 
   if (loading) {
