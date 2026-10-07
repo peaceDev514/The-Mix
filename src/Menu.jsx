@@ -4,6 +4,18 @@ import "./Menu.css";
 function Menu() {
   const [openCategory, setOpenCategory] = useState(null);
 
+  const whatsappNumber = "2349011445400";
+
+  const handleMenuClick = (itemName) => {
+    const message = `Hello, I'd like to make an enquiry about ${itemName}.`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   const categories = [
     {
       name: "Food",
@@ -71,10 +83,6 @@ function Menu() {
       ],
     },
 
-    /* ================================
-       RESTAURANT DRINKS
-    ================================= */
-
     {
       name: "Restaurant Drinks",
       items: [
@@ -85,10 +93,6 @@ function Menu() {
         { name: "Pure Heaven", price: "₦2,500" },
       ],
     },
-
-    /* ================================
-       LOUNGE DRINKS
-    ================================= */
 
     {
       name: "Lounge Drinks",
@@ -118,18 +122,12 @@ function Menu() {
   return (
     <section id="menu" className="menu-preview">
 
-      {/* ================================
-          MENU HEADER
-      ================================= */}
-
       <div className="menu-header">
         <span className="menu-label">
           Discover
         </span>
 
-        <h2>
-          Our Menu
-        </h2>
+        <h2>Our Menu</h2>
 
         <p>
           Explore some of our favourite meals, freshly
@@ -138,15 +136,9 @@ function Menu() {
         </p>
       </div>
 
-
-      {/* ================================
-          MENU CATEGORIES
-      ================================= */}
-
       <div className="menu-categories">
 
         {categories.map((category, index) => (
-
           <div
             className={`menu-category ${
               openCategory === index ? "open" : ""
@@ -154,79 +146,56 @@ function Menu() {
             key={category.name}
           >
 
-            {/* CATEGORY HEADER */}
-
             <button
               type="button"
               className="category-header"
               onClick={() => toggleCategory(index)}
               aria-expanded={openCategory === index}
             >
-
               <span className="category-number">
                 {String(index + 1).padStart(2, "0")}
               </span>
 
-              <h3>
-                {category.name}
-              </h3>
+              <h3>{category.name}</h3>
 
               <span className="category-icon">
                 {openCategory === index ? "−" : "+"}
               </span>
-
             </button>
 
-
-            {/* CATEGORY DROPDOWN */}
-
             <div className="category-dropdown">
-
               <div className="category-items">
 
                 {category.items.map((item) => (
-
-                  <div
+                  <button
+                    type="button"
                     className="menu-item"
                     key={item.name}
+                    onClick={() => handleMenuClick(item.name)}
                   >
-
-                    <h4>
-                      {item.name}
-                    </h4>
+                    <h4>{item.name}</h4>
 
                     <span className="menu-price">
                       {item.price}
                     </span>
-
-                  </div>
-
+                  </button>
                 ))}
 
               </div>
-
             </div>
 
           </div>
-
         ))}
 
       </div>
 
-
-      {/* ================================
-          FULL MENU BUTTON
-      ================================= */}
-
       <div className="menu-button-wrapper">
-
         <a
           href="/menu"
           className="menu-button"
         >
           View Full Menu
         </a>
-
       </div>
 
     </section>

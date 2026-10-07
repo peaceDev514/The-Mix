@@ -4,11 +4,8 @@
 
 .menu-preview {
   position: relative;
-
   width: 100%;
-
   padding: 140px 7%;
-
   overflow: hidden;
 
   background:
@@ -39,7 +36,6 @@
 
 .menu-header {
   max-width: 800px;
-
   margin-bottom: 65px;
 }
 
@@ -156,13 +152,6 @@
    CATEGORY HEADER
 ================================ */
 
-/*
-   IMPORTANT:
-   This matches the JSX:
-
-   <button className="category-header">
-*/
-
 .category-header {
   width: 100%;
 
@@ -246,13 +235,8 @@
 
 
 /* ================================
-   PLUS / MINUS BUTTON
+   PLUS / MINUS
 ================================ */
-
-/*
-   This is the element that contains
-   + or − in your JSX.
-*/
 
 .category-icon {
   width: 43px;
@@ -271,7 +255,6 @@
   color: #6ced96;
 
   font-size: 27px;
-
   font-weight: 400;
 
   line-height: 1;
@@ -283,7 +266,7 @@
 }
 
 
-/* When category is open */
+/* OPEN CATEGORY */
 
 .menu-category.open .category-icon {
   background:
@@ -303,9 +286,7 @@
    CATEGORY DROPDOWN
 ================================ */
 
-/*
-   CLOSED STATE
-*/
+/* CLOSED */
 
 .category-dropdown {
   display: grid;
@@ -317,25 +298,23 @@
 }
 
 
-/*
-   OPEN STATE
-*/
+/* OPEN */
 
 .menu-category.open .category-dropdown {
   grid-template-rows: 1fr;
 }
 
 
-/*
-   Inner wrapper must have
-   overflow hidden for the
-   height animation to work.
-*/
+/* ================================
+   CATEGORY ITEMS
+================================ */
 
 .category-items {
   min-height: 0;
 
   overflow: hidden;
+
+  padding: 8px 12px 12px;
 }
 
 
@@ -344,32 +323,111 @@
 ================================ */
 
 .menu-item {
-  display: flex;
+  position: relative;
 
+  width: 100%;
+
+  display: flex;
   align-items: center;
 
-  gap: 15px;
+  gap: 16px;
 
   min-width: 0;
 
-  padding: 17px 28px;
+  margin: 6px 0;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 17px 18px;
+
+  border: 1px solid transparent;
+  border-radius: 16px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #fff;
+
+  text-align: left;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
 
   transition:
-    background 0.25s ease,
-    padding-left 0.25s ease;
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+
+/* ================================
+   MENU ITEM ICON
+================================ */
+
+.menu-item::before {
+  content: "↗";
+
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(104, 237, 145, 0.2);
+
+  border-radius: 10px;
+
+  background: rgba(50, 211, 104, 0.08);
+
+  color: #65ea91;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* ================================
+   MENU ITEM HOVER
+================================ */
+
 .menu-item:hover {
-  padding-left: 34px;
+  transform: translateX(5px);
+
+  border-color: rgba(104, 237, 145, 0.28);
 
   background:
     linear-gradient(
       90deg,
-      rgba(50, 211, 104, 0.22),
-      transparent
+      rgba(50, 211, 104, 0.14),
+      rgba(255, 255, 255, 0.035)
     );
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.16);
+}
+
+.menu-item:hover::before {
+  background:
+    linear-gradient(
+      135deg,
+      #65ea91,
+      #20a957
+    );
+
+  color: #06200f;
+
+  transform: rotate(8deg);
 }
 
 
@@ -384,13 +442,20 @@
 
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.9);
 
   font-size: 15px;
 
-  font-weight: 500;
+  font-weight: 650;
 
-  line-height: 1.5;
+  line-height: 1.4;
+
+  transition:
+    color 0.3s ease;
+}
+
+.menu-item:hover h4 {
+  color: #fff;
 }
 
 
@@ -403,22 +468,62 @@
 
   padding: 7px 12px;
 
+  border: 1px solid rgba(101, 234, 145, 0.18);
+
   border-radius: 50px;
 
-  background: rgba(79, 227, 122, 0.12);
+  background: rgba(79, 227, 122, 0.09);
 
   color: #65ea91;
 
-  font-size: 13px;
+  font-size: 12px;
 
   font-weight: 800;
 
   white-space: nowrap;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.menu-item:hover .menu-price {
+  border-color: rgba(101, 234, 145, 0.35);
+
+  background: rgba(79, 227, 122, 0.16);
 }
 
 
 /* ================================
-   VIEW FULL MENU BUTTON
+   FOCUS
+================================ */
+
+.menu-item:focus-visible {
+  border-color: #65ea91;
+
+  box-shadow:
+    0 0 0 3px rgba(101, 234, 145, 0.12);
+}
+
+
+/* ================================
+   OPEN CATEGORY
+================================ */
+
+.menu-category.open {
+  border-color: rgba(91, 232, 132, 0.35);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(40, 180, 91, 0.2),
+      rgba(255, 255, 255, 0.04)
+    );
+}
+
+
+/* ================================
+   VIEW FULL MENU
 ================================ */
 
 .menu-button-wrapper {
@@ -484,26 +589,11 @@
 
 
 /* ================================
-   OPEN CATEGORY EFFECT
-================================ */
-
-.menu-category.open {
-  border-color: rgba(91, 232, 132, 0.35);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(40, 180, 91, 0.2),
-      rgba(255, 255, 255, 0.04)
-    );
-}
-
-
-/* ================================
    MOBILE
 ================================ */
 
 @media (max-width: 700px) {
+
   .menu-preview {
     padding: 90px 5%;
   }
@@ -546,14 +636,27 @@
     font-size: 24px;
   }
 
-  .menu-item {
-    align-items: flex-start;
-
-    padding: 15px 20px;
+  .category-items {
+    padding: 6px 8px 10px;
   }
 
-  .menu-item:hover {
-    padding-left: 20px;
+  .menu-item {
+    gap: 12px;
+
+    margin: 5px 0;
+
+    padding: 14px 13px;
+
+    border-radius: 14px;
+  }
+
+  .menu-item::before {
+    width: 31px;
+    height: 31px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
   }
 
   .menu-item h4 {
@@ -561,9 +664,13 @@
   }
 
   .menu-price {
-    font-size: 12px;
-
     padding: 6px 9px;
+
+    font-size: 11px;
+  }
+
+  .menu-item:hover {
+    transform: none;
   }
 }
 
@@ -573,6 +680,7 @@
 ================================ */
 
 @media (max-width: 420px) {
+
   .menu-preview {
     padding: 75px 4%;
   }
@@ -599,10 +707,25 @@
     font-size: 22px;
   }
 
-  .menu-item {
-    gap: 10px;
+  .category-items {
+    padding: 5px 6px 8px;
+  }
 
-    padding: 14px 15px;
+  .menu-item {
+    gap: 9px;
+
+    padding: 12px 10px;
+
+    border-radius: 12px;
+  }
+
+  .menu-item::before {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
   }
 
   .menu-item h4 {
@@ -610,9 +733,9 @@
   }
 
   .menu-price {
-    padding: 5px 8px;
+    padding: 5px 7px;
 
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 
@@ -622,6 +745,7 @@
 ================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
   .menu-category,
   .category-header,
   .category-icon,
