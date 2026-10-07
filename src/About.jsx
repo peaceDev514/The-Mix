@@ -102,14 +102,19 @@ function About() {
           </p>
 
           <p>
-            The Mix & Lounge is a vibrant dining and entertainment destination located on UNIOSUN School Road, Osogbo, Osun State, Nigeria. We bring people together through delicious meals, refreshing drinks, exceptional service, and unforgettable experiences.
+            Welcome to The Mix
 
-From mouthwatering local and continental dishes to grills, shawarma, cocktails, and exciting lounge experiences, we offer something for everyone. Whether you're looking for a casual meal, a fun night out with friends, a family gathering, or a special celebration, Table Mannas is the perfect place to eat, relax, connect, and make lasting memories.
+The Mix is one of Osogbo’s vibrant destinations for food, drinks, games, music, and unforgettable entertainment. Located on UNIOSUN School Road, Oke-Baale, we bring together great food, refreshing drinks, exciting games, and a lively atmosphere all under one roof.
 
-At The Mix, we are passionate about great food, quality service, and creating memorable moments for every guest. We also offer convenient food delivery, bringing your favourite meals straight to your doorstep.
+Whether you’re looking for a relaxed place to hang out with friends, enjoy a delicious meal, sip on your favourite drink, play games, or experience the nightlife, The Mix has something for everyone.
 
-The Mix Restaurant & Lounge 
-Grab life by the taste....
+From our carefully prepared meals and grills to cocktails, mocktails, milkshakes, shisha, and an exciting selection of games including snooker, table tennis, and air hockey, every visit is designed to give you a memorable experience.
+
+At The Mix, we believe that good food tastes better, great drinks flow better, and every moment is better when shared. We also host exciting events, campus experiences, parties, and entertainment nights that keep Osogbo buzzing.
+
+Come for the food. Stay for the vibes. Leave with memories.
+
+The Mix — Where Food, Fun & Vibes Come Together.
           </p>
 
           <a href="#about" className="about-button">
