@@ -97,13 +97,10 @@ function About() {
           </h2>
 
           <p>
-            Welcome to The Mix, where great food, quality
-            ingredients, and a welcoming atmosphere come together.
+            Welcome to The Mix.
           </p>
 
           <p>
-            Welcome to The Mix
-
 The Mix is one of Osogbo’s vibrant destinations for food, drinks, games, music, and unforgettable entertainment. Located on UNIOSUN School Road, Oke-Baale, we bring together great food, refreshing drinks, exciting games, and a lively atmosphere all under one roof.
 
 Whether you’re looking for a relaxed place to hang out with friends, enjoy a delicious meal, sip on your favourite drink, play games, or experience the nightlife, The Mix has something for everyone.
