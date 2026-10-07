@@ -1,134 +1,507 @@
+/* =========================================================
+   WHY US — FLASHY RESTAURANT SECTION
+========================================================= */
+
 .why-us {
+  position: relative;
   width: 100%;
-  padding: 120px 8%;
+  padding: 140px 7%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 20%,
+      rgba(255, 166, 0, 0.35),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(239, 68, 68, 0.28),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #160b05 0%,
+      #2b1105 45%,
+      #0d1020 100%
+    );
 }
 
-/* Header */
+
+/* Decorative background circles */
+
+.why-us::before {
+  content: "";
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -180px;
+  right: -120px;
+
+  border-radius: 50%;
+
+  background: #ff9d00;
+
+  opacity: 0.18;
+
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+.why-us::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  bottom: -120px;
+  left: -100px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  opacity: 0.18;
+
+  filter: blur(30px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .why-us-header {
-  max-width: 700px;
-  margin-bottom: 70px;
+  position: relative;
+  z-index: 2;
+
+  max-width: 850px;
+
+  margin-bottom: 75px;
 }
+
+
+/* Small label */
 
 .section-label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 
-  font-size: 12px;
-  letter-spacing: 4px;
+  padding: 10px 18px;
+
+  border-radius: 100px;
+
+  background: #ff9d00;
+
+  color: #241006;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
   text-transform: uppercase;
 
-  color: #777;
+  box-shadow:
+    0 10px 35px rgba(255, 157, 0, 0.35);
 }
+
+
+/* Small glowing dot */
+
+.section-label::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  box-shadow:
+    0 0 12px #ef4444;
+}
+
+
+/* Heading */
 
 .why-us-header h2 {
   margin: 0 0 25px;
 
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.95;
-  font-weight: 500;
+  max-width: 850px;
+
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+
+  line-height: 0.88;
+
+  font-weight: 800;
+
+  letter-spacing: -4px;
+
+  color: #ffffff;
 }
 
+
+/* Highlight part if span exists */
+
+.why-us-header h2 span {
+  color: #ff9d00;
+}
+
+
+/* Description */
+
 .why-us-header p {
-  max-width: 550px;
+  max-width: 620px;
 
   margin: 0;
 
-  font-size: 16px;
+  font-size: 17px;
+
   line-height: 1.8;
 
-  color: #666;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 
-/* Cards */
+/* =========================================================
+   WHY US CARDS
+========================================================= */
 
 .why-us-cards {
+  position: relative;
+  z-index: 2;
+
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+
+  gap: 25px;
 }
+
+
+/* Base card */
 
 .why-card {
   position: relative;
 
-  padding: 45px 35px;
+  min-height: 360px;
 
-  min-height: 300px;
+  padding: 38px 32px;
 
-  background: #8D8A82;
+  overflow: hidden;
 
-  transition: transform 0.4s ease;
+  border-radius: 30px;
+
+  color: #17100b;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
+
+
+/* Different colors for each card */
+
+.why-card:nth-child(1) {
+  background:
+    linear-gradient(
+      145deg,
+      #ffb703,
+      #fb8500
+    );
+
+  box-shadow:
+    0 25px 60px rgba(251, 133, 0, 0.25);
+}
+
+.why-card:nth-child(2) {
+  background:
+    linear-gradient(
+      145deg,
+      #ff5a36,
+      #e63946
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 25px 60px rgba(230, 57, 70, 0.25);
+}
+
+.why-card:nth-child(3) {
+  background:
+    linear-gradient(
+      145deg,
+      #fff1c1,
+      #ffd166
+    );
+
+  box-shadow:
+    0 25px 60px rgba(255, 209, 102, 0.2);
+}
+
+
+/* Card hover */
 
 .why-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-14px) rotate(-1deg);
 }
+
+
+/* =========================================================
+   DECORATIVE CARD CIRCLE
+========================================================= */
+
+.why-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 190px;
+  height: 190px;
+
+  right: -70px;
+  bottom: -70px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  transition: transform 0.5s ease;
+}
+
+.why-card:hover::before {
+  transform: scale(1.3);
+}
+
+
+/* Second decorative circle */
+
+.why-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 70px;
+  height: 70px;
+
+  top: 30px;
+  right: 30px;
+
+  border-radius: 50%;
+
+  border: 12px solid rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
 
 .card-number {
+  position: relative;
+  z-index: 2;
+
   display: block;
 
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 
   font-size: 12px;
+
+  font-weight: 800;
+
   letter-spacing: 3px;
 
-  color: black;
+  opacity: 0.7;
 }
+
+
+/* =========================================================
+   ICON
+========================================================= */
 
 .card-icon {
-  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
 
-  font-size: 28px;
-}
-
-.why-card h3 {
-  margin: 0 0 15px;
-
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.why-card p {
-  margin: 0;
-
-  max-width: 330px;
-
-  font-size: 15px;
-  line-height: 1.8;
-
-  color: white;
-}
-
-
-/* About */
-
-.about-section {
-  width: 90%;
-
-  padding: 120px 8%;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  display: flex;
 
   align-items: center;
+  justify-content: center;
 
-  background: #8D8A82;
+  width: 68px;
+  height: 68px;
 
-  border-radius: 40px;
+  margin-bottom: 30px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(8px);
+
+  font-size: 30px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+.why-card h3 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 0 15px;
+
+  font-size: 27px;
+
+  line-height: 1.1;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   CARD TEXT
+========================================================= */
+
+.why-card p {
+  position: relative;
+  z-index: 2;
+
+  max-width: 340px;
+
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.75;
+
+  color: inherit;
+
+  opacity: 0.78;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about-section {
+  position: relative;
+
+  width: calc(100% - 60px);
 
   margin: 30px;
 
-}
+  padding: 35px;
 
-.about-image {
-  width: 100%;
-  height: 650px;
+  display: grid;
+
+  grid-template-columns: 1.05fr 0.95fr;
+
+  gap: 60px;
+
+  align-items: center;
 
   overflow: hidden;
+
+  border-radius: 45px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff4d6 0%,
+      #ffdca8 45%,
+      #ffb56b 100%
+    );
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.25);
 }
+
+
+/* Decorative orange shape */
+
+.about-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  right: -180px;
+  top: -180px;
+
+  border-radius: 50%;
+
+  background: #ff6b35;
+
+  opacity: 0.18;
+}
+
+
+/* Decorative yellow shape */
+
+.about-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  left: -100px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background: #ffb703;
+
+  opacity: 0.2;
+}
+
+
+/* =========================================================
+   ABOUT IMAGE
+========================================================= */
+
+.about-image {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 620px;
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  border: 8px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Image */
 
 .about-image img {
   width: 100%;
@@ -136,73 +509,210 @@
 
   object-fit: cover;
 
-  transition: transform 0.7s ease;
+  transition:
+    transform 0.8s ease,
+    filter 0.5s ease;
 }
+
+
+/* Hover */
 
 .about-image:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08);
+
+  filter: saturate(1.15);
 }
 
 
-/* About Content */
+/* =========================================================
+   IMAGE BADGE
+========================================================= */
+
+.about-image::after {
+  content: "MADE WITH LOVE ❤️";
+
+  position: absolute;
+
+  left: 25px;
+  bottom: 25px;
+
+  padding: 12px 18px;
+
+  border-radius: 50px;
+
+  background: #ff9d00;
+
+  color: #241006;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   ABOUT CONTENT
+========================================================= */
 
 .about-content {
+  position: relative;
+  z-index: 2;
+
   max-width: 600px;
 }
-.about-content span{
-	color: black;
+
+
+/* Label */
+
+.about-content span {
+  display: inline-block;
+
+  margin-bottom: 22px;
+
+  padding: 9px 17px;
+
+  border-radius: 50px;
+
+  background: #e63946;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  box-shadow:
+    0 10px 25px rgba(230, 57, 70, 0.25);
 }
+
+
+/* Heading */
 
 .about-content h2 {
-  margin: 0 0 35px;
+  margin: 0 0 30px;
 
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.95;
-  font-weight: 500;
+  font-size: clamp(3.2rem, 6vw, 6rem);
+
+  line-height: 0.9;
+
+  font-weight: 800;
+
+  letter-spacing: -3px;
+
+  color: #1a120d;
 }
+
+
+/* Paragraph */
 
 .about-content p {
   margin: 0 0 18px;
 
   font-size: 16px;
+
   line-height: 1.9;
 
-  color: black;
+  color: #513b2c;
 }
 
+
+/* =========================================================
+   ABOUT BUTTON
+========================================================= */
+
 .about-button {
-  display: inline-block;
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
 
   margin-top: 20px;
 
-  padding: 15px 30px;
+  padding: 17px 28px;
 
-  border: 1px solid #111;
+  border-radius: 50px;
 
-  color: #111;
+  background: #1a120d;
+
+  color: #ffffff;
 
   text-decoration: none;
 
-  transition: 0.3s ease;
+  font-size: 14px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+
+/* Button arrow */
+
+.about-button::after {
+  content: "→";
+
+  font-size: 20px;
+
+  transition: transform 0.3s ease;
+}
+
+
+/* Button hover */
 
 .about-button:hover {
-  background: #111;
-  color: #fff;
+  transform: translateY(-4px);
+
+  background: #e63946;
+
+  box-shadow:
+    0 15px 35px rgba(230, 57, 70, 0.3);
+}
+
+.about-button:hover::after {
+  transform: translateX(5px);
 }
 
 
-/* Tablet */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 900px) {
+
+  .why-us {
+    padding: 100px 6%;
+  }
 
   .why-us-cards {
     grid-template-columns: 1fr;
   }
 
+  .why-card {
+    min-height: 300px;
+  }
+
   .about-section {
     grid-template-columns: 1fr;
-    gap: 50px;
+
+    gap: 45px;
+
+    padding: 25px;
   }
 
   .about-image {
@@ -211,12 +721,14 @@
 }
 
 
-/* Mobile */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
   .why-us {
-    padding: 80px 6%;
+    padding: 80px 5%;
   }
 
   .why-us-header {
@@ -224,22 +736,78 @@
   }
 
   .why-us-header h2 {
-    font-size: 3rem;
+    font-size: 3.3rem;
+
+    letter-spacing: -2px;
+  }
+
+  .why-us-header p {
+    font-size: 15px;
   }
 
   .why-card {
-    padding: 35px 25px;
+    min-height: 310px;
+
+    padding: 32px 25px;
+
+    border-radius: 25px;
+  }
+
+  .card-icon {
+    width: 60px;
+    height: 60px;
+
+    font-size: 25px;
+  }
+
+  .why-card h3 {
+    font-size: 24px;
   }
 
   .about-section {
-    padding: 80px 6%;
+    width: calc(100% - 20px);
+
+    margin: 10px;
+
+    padding: 18px;
+
+    gap: 40px;
+
+    border-radius: 30px;
   }
 
   .about-image {
-    height: 450px;
+    height: 430px;
+
+    border-width: 5px;
+
+    border-radius: 24px;
+  }
+
+  .about-image::after {
+    left: 15px;
+    bottom: 15px;
+
+    font-size: 9px;
+  }
+
+  .about-content {
+    padding: 10px 5px 25px;
   }
 
   .about-content h2 {
-    font-size: 3rem;
+    font-size: 3.2rem;
+
+    letter-spacing: -2px;
+  }
+
+  .about-content p {
+    font-size: 15px;
+  }
+
+  .about-button {
+    width: 100%;
+
+    justify-content: center;
   }
 }

@@ -97,7 +97,7 @@ function Footer() {
         <div className="footer-bottom">
 
           <p>
-            © {new Date().getFullYear()} TableMannas.
+            © {new Date().getFullYear()} The Mix.
             All rights reserved.
           </p>
 
