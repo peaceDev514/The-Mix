@@ -64,13 +64,12 @@ const menuCategories = [
     emoji: "🥣",
     items: [
       ["Swallow", "Semo / Pando / Eba / Amala"],
-      ["Soup", "Egusi / Vegetable / Okra"],
+      ["Soup", "Egusi / Vegetable / Egusi & Okra"],
       ["A Plate of Swallow with Beef", "₦2,700"],
       ["A Plate of Swallow with Fish", "₦3,000"],
       ["A Plate of Swallow with Chicken", "₦4,000"],
       ["A Plate of Swallow with Turkey", "₦5,500 / ₦6,000"],
-      ["1 Litre of Vegetable Soup", "₦6,000"],
-      ["1 Litre of Egusi Soup", "₦6,000"],
+      ["1 Litre of Vegetable / Egusi Soup", "₦6,000"],
       ["1 Litre of Okro Soup", "₦10,000"],
     ],
   },
@@ -101,7 +100,7 @@ const menuCategories = [
       ["Fruit Bread", "₦1,200"],
       ["Chocolate Bread", "₦1,000"],
       ["Chocolate Bread", "₦1,500"],
-      ["Sardine Bread", "₦1,000"],
+      ["Sandine Bread", "₦1,000"],
       ["Sardine Bread", "₦1,500"],
       ["Banana Bread", "₦2,000"],
       ["Coconut Bread", "₦1,000"],
@@ -136,7 +135,7 @@ const menuCategories = [
   },
 
   {
-    id: "cakes",
+    id: "cake",
     title: "Cake Menu",
     subtitle: "Sweet treats for every occasion",
     emoji: "🍰",
@@ -184,12 +183,12 @@ const menuCategories = [
   },
 
   {
-    id: "drinks",
+    id: "restaurant-drinks",
     title: "Restaurant Drinks",
     subtitle: "Refreshing drinks & beverages",
     emoji: "🥤",
     items: [
-      ["Big Hollandia Yoghurt", "₦2,500"],
+      ["Big Hollandia Yoghourt", "₦2,500"],
       ["Big Exotic", "₦2,500"],
       ["Big Active", "₦2,500"],
       ["Small Active", "₦1,200"],
@@ -220,6 +219,158 @@ const menuCategories = [
       ["Sprite", "₦600"],
     ],
   },
+
+  /* LOUNGE DRINKS — INDIVIDUAL CATEGORIES */
+
+  {
+    id: "lounge-beer",
+    title: "Beer",
+    subtitle: "Lounge beer selection",
+    emoji: "🍺",
+    items: [
+      ["Lounge Beer Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-energy-drinks",
+    title: "Energy Drinks",
+    subtitle: "Energy drink selection",
+    emoji: "⚡",
+    items: [
+      ["Energy Drink Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-soft-drinks",
+    title: "Soft Drinks / Water / Malt",
+    subtitle: "Soft drinks, water & malt selection",
+    emoji: "🥤",
+    items: [
+      ["Soft Drinks / Water / Malt Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-wine",
+    title: "Wine",
+    subtitle: "Wine selection",
+    emoji: "🍷",
+    items: [
+      ["Wine Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-whisky",
+    title: "Whisky",
+    subtitle: "Whisky selection",
+    emoji: "🥃",
+    items: [
+      ["Whisky Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-vodka",
+    title: "Vodka",
+    subtitle: "Vodka selection",
+    emoji: "🍸",
+    items: [
+      ["Vodka Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-gin",
+    title: "Gin",
+    subtitle: "Gin selection",
+    emoji: "🍸",
+    items: [
+      ["Gin Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-champagne",
+    title: "Champagne / Sparkling Wine",
+    subtitle: "Sparkling selection",
+    emoji: "🥂",
+    items: [
+      ["Champagne / Sparkling Wine Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-cognac",
+    title: "Cognac",
+    subtitle: "Cognac selection",
+    emoji: "🥃",
+    items: [
+      ["Cognac Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-tequila",
+    title: "Tequila",
+    subtitle: "Tequila selection",
+    emoji: "🌵",
+    items: [
+      ["Tequila Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-rum",
+    title: "Rum",
+    subtitle: "Rum selection",
+    emoji: "🥃",
+    items: [
+      ["Rum Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-cream-blended",
+    title: "Cream / Blended Liquor",
+    subtitle: "Cream & blended selection",
+    emoji: "🍶",
+    items: [
+      ["Cream / Blended Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-bitters",
+    title: "Bitters / Other Alcoholic Drinks",
+    subtitle: "Lounge selection",
+    emoji: "🍹",
+    items: [
+      ["Bitters / Other Lounge Selection", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-shisha",
+    title: "Shisha",
+    subtitle: "Lounge service",
+    emoji: "💨",
+    items: [
+      ["Shisha Service", "See lounge menu"],
+    ],
+  },
+
+  {
+    id: "lounge-juices-mixers",
+    title: "Juices / Mixers",
+    subtitle: "Juices and mixers",
+    emoji: "🍹",
+    items: [
+      ["Juices / Mixers Selection", "See lounge menu"],
+    ],
+  },
 ];
 
 function FullMenu() {
@@ -228,7 +379,9 @@ function FullMenu() {
   const filteredCategories = useMemo(() => {
     const query = search.trim().toLowerCase();
 
-    if (!query) return menuCategories;
+    if (!query) {
+      return menuCategories;
+    }
 
     return menuCategories
       .map((category) => ({
@@ -270,7 +423,10 @@ function FullMenu() {
 
         <div className="menu-search-wrapper">
           <div className="menu-search">
-            <span className="search-icon">⌕</span>
+
+            <span className="search-icon">
+              ⌕
+            </span>
 
             <input
               type="text"
@@ -281,23 +437,30 @@ function FullMenu() {
 
             {search && (
               <button
+                type="button"
                 onClick={() => setSearch("")}
                 aria-label="Clear search"
               >
                 ×
               </button>
             )}
+
           </div>
         </div>
 
         {!search && (
           <nav className="menu-category-nav">
+
             {menuCategories.map((category) => (
-              <a href={`#${category.id}`} key={category.id}>
+              <a
+                href={`#${category.id}`}
+                key={category.id}
+              >
                 <span>{category.emoji}</span>
                 {category.title}
               </a>
             ))}
+
           </nav>
         )}
 
@@ -305,6 +468,7 @@ function FullMenu() {
 
           {filteredCategories.length > 0 ? (
             filteredCategories.map((category, index) => (
+
               <section
                 className="full-menu-category"
                 id={category.id}
@@ -318,6 +482,7 @@ function FullMenu() {
                   </div>
 
                   <div className="category-title">
+
                     <span>
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -326,31 +491,38 @@ function FullMenu() {
                       <p>{category.subtitle}</p>
                       <h2>{category.title}</h2>
                     </div>
+
                   </div>
 
                 </div>
 
                 <div className="menu-list">
 
-                  {category.items.map(([name, price], itemIndex) => (
-                    <div
-                      className="full-menu-item"
-                      key={`${category.id}-${name}-${price}-${itemIndex}`}
-                    >
-                      <h3>{name}</h3>
+                  {category.items.map(
+                    ([name, price], itemIndex) => (
+                      <div
+                        className="full-menu-item"
+                        key={`${category.id}-${name}-${price}-${itemIndex}`}
+                      >
 
-                      <div className="menu-dots" />
+                        <h3>{name}</h3>
 
-                      <span>{price}</span>
-                    </div>
-                  ))}
+                        <div className="menu-dots" />
+
+                        <span>{price}</span>
+
+                      </div>
+                    )
+                  )}
 
                 </div>
 
               </section>
             ))
           ) : (
+
             <div className="no-results">
+
               <span>🔎</span>
 
               <h2>
@@ -359,9 +531,13 @@ function FullMenu() {
                 your search.
               </h2>
 
-              <button onClick={() => setSearch("")}>
+              <button
+                type="button"
+                onClick={() => setSearch("")}
+              >
                 View Full Menu
               </button>
+
             </div>
           )}
 
@@ -369,6 +545,7 @@ function FullMenu() {
       </section>
 
       <section className="menu-cta">
+
         <span>Hungry already?</span>
 
         <h2>
@@ -377,9 +554,13 @@ function FullMenu() {
           <em>waiting for you.</em>
         </h2>
 
-        <Link to="/#contact" className="get-in-touch">
+        <Link
+          to="/#contact"
+          className="get-in-touch"
+        >
           Get in Touch
         </Link>
+
       </section>
 
     </main>
