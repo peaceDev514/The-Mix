@@ -3,17 +3,30 @@ import "./Menu.css";
 
 function Menu() {
   const [openCategory, setOpenCategory] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const whatsappNumber = "2349011445400";
 
-  const handleMenuClick = (itemName) => {
-    const message = `Hello, I'd like to make an enquiry about ${itemName}.`;
+  const handleMenuClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const handleConfirmOrder = () => {
+    if (!selectedItem) return;
+
+    const message = `Hello, I'd like to order ${selectedItem.name} (${selectedItem.price}).`;
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       message
     )}`;
 
     window.open(whatsappUrl, "_blank");
+
+    setSelectedItem(null);
+  };
+
+  const handleCancelOrder = () => {
+    setSelectedItem(null);
   };
 
   const categories = [
@@ -171,7 +184,7 @@ function Menu() {
                     type="button"
                     className="menu-item"
                     key={item.name}
-                    onClick={() => handleMenuClick(item.name)}
+                    onClick={() => handleMenuClick(item)}
                   >
                     <h4>{item.name}</h4>
 
@@ -197,6 +210,78 @@ function Menu() {
           View Full Menu
         </a>
       </div>
+
+
+      {/* ORDER CONFIRMATION MODAL */}
+
+      {selectedItem && (
+        <div
+          className="order-modal-overlay"
+          onClick={handleCancelOrder}
+        >
+          <div
+            className="order-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <button
+              type="button"
+              className="order-modal-close"
+              onClick={handleCancelOrder}
+              aria-label="Close"
+            >
+              ×
+            </button>
+
+            <span className="order-modal-icon">
+              🛍
+            </span>
+
+            <h3>
+              Continue with order?
+            </h3>
+
+            <p>
+              You selected:
+            </p>
+
+            <div className="selected-order">
+              <strong>
+                {selectedItem.name}
+              </strong>
+
+              <span>
+                {selectedItem.price}
+              </span>
+            </div>
+
+            <p className="order-modal-note">
+              Continue to WhatsApp to place your order.
+            </p>
+
+            <div className="order-modal-actions">
+
+              <button
+                type="button"
+                className="order-cancel"
+                onClick={handleCancelOrder}
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                className="order-confirm"
+                onClick={handleConfirmOrder}
+              >
+                Yes, Continue
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      )}
 
     </section>
   );
