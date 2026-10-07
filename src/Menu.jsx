@@ -71,14 +71,31 @@ function Menu() {
       ],
     },
 
+    /* ================================
+       RESTAURANT DRINKS
+    ================================= */
+
     {
-      name: "Drinks",
+      name: "Restaurant Drinks",
       items: [
         { name: "Water", price: "₦300" },
         { name: "Pet Coke", price: "₦600" },
         { name: "Pet Fanta", price: "₦600" },
         { name: "Zobo", price: "₦500 / ₦1,000" },
         { name: "Pure Heaven", price: "₦2,500" },
+      ],
+    },
+
+    /* ================================
+       LOUNGE DRINKS
+    ================================= */
+
+    {
+      name: "Lounge Drinks",
+      items: [
+        { name: "Energy Drinks", price: "See Full Menu" },
+        { name: "Soft Drinks & Water", price: "See Full Menu" },
+        { name: "Juices & Mixers", price: "See Full Menu" },
       ],
     },
 
@@ -93,67 +110,125 @@ function Menu() {
   ];
 
   const toggleCategory = (index) => {
-    setOpenCategory(openCategory === index ? null : index);
+    setOpenCategory(
+      openCategory === index ? null : index
+    );
   };
 
   return (
     <section id="menu" className="menu-preview">
-      <div className="menu-header">
-        <span className="menu-label">Discover</span>
 
-        <h2>Our Menu</h2>
+      {/* ================================
+          MENU HEADER
+      ================================= */}
+
+      <div className="menu-header">
+        <span className="menu-label">
+          Discover
+        </span>
+
+        <h2>
+          Our Menu
+        </h2>
 
         <p>
-          Explore some of our favourite meals, freshly prepared with quality
-          ingredients and served with great taste.
+          Explore some of our favourite meals, freshly
+          prepared with quality ingredients and served
+          with great taste.
         </p>
       </div>
 
+
+      {/* ================================
+          MENU CATEGORIES
+      ================================= */}
+
       <div className="menu-categories">
+
         {categories.map((category, index) => (
+
           <div
             className={`menu-category ${
               openCategory === index ? "open" : ""
             }`}
             key={category.name}
           >
+
+            {/* CATEGORY HEADER */}
+
             <button
+              type="button"
               className="category-header"
               onClick={() => toggleCategory(index)}
+              aria-expanded={openCategory === index}
             >
+
               <span className="category-number">
-                0{index + 1}
+                {String(index + 1).padStart(2, "0")}
               </span>
 
-              <h3>{category.name}</h3>
+              <h3>
+                {category.name}
+              </h3>
 
               <span className="category-icon">
                 {openCategory === index ? "−" : "+"}
               </span>
+
             </button>
 
+
+            {/* CATEGORY DROPDOWN */}
+
             <div className="category-dropdown">
+
               <div className="category-items">
+
                 {category.items.map((item) => (
-                  <div className="menu-item" key={item.name}>
-                    <h4>{item.name}</h4>
+
+                  <div
+                    className="menu-item"
+                    key={item.name}
+                  >
+
+                    <h4>
+                      {item.name}
+                    </h4>
 
                     <span className="menu-price">
                       {item.price}
                     </span>
+
                   </div>
+
                 ))}
+
               </div>
+
             </div>
+
           </div>
+
         ))}
+
       </div>
 
+
+      {/* ================================
+          FULL MENU BUTTON
+      ================================= */}
+
       <div className="menu-button-wrapper">
-        <a href="/menu" className="menu-button">
+
+        <a
+          href="/menu"
+          className="menu-button"
+        >
           View Full Menu
         </a>
+
       </div>
+
     </section>
   );
 }

@@ -1,7 +1,3 @@
-/* =========================================================
-   RESERVATION — FLASHY RESTAURANT STYLE
-========================================================= */
-
 .reservation {
   position: relative;
 
@@ -12,7 +8,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 120px 6%;
+  padding: 100px 6%;
 
   background-size: cover;
   background-position: center;
@@ -20,154 +16,101 @@
   overflow: hidden;
 }
 
-
-/* =========================================================
-   COLORFUL OVERLAY
-========================================================= */
-
 .reservation-overlay {
   position: absolute;
-
   inset: 0;
 
   background:
     linear-gradient(
       135deg,
-      rgba(20, 7, 2, 0.82),
-      rgba(105, 27, 5, 0.68),
-      rgba(8, 12, 28, 0.78)
+      rgba(2, 20, 11, 0.92),
+      rgba(5, 76, 38, 0.72),
+      rgba(1, 21, 10, 0.88)
     );
-
-  z-index: 1;
 }
-
-
-/* =========================================================
-   DECORATIVE GLOW
-========================================================= */
 
 .reservation::before {
   content: "";
 
   position: absolute;
 
-  width: 450px;
-  height: 450px;
+  width: 400px;
+  height: 400px;
 
-  top: -220px;
-  left: -120px;
+  top: -180px;
+  right: -100px;
 
   border-radius: 50%;
 
-  background: #ff9d00;
+  background: rgba(55, 230, 119, 0.18);
 
-  opacity: 0.3;
-
-  filter: blur(40px);
-
-  z-index: 1;
-
-  pointer-events: none;
+  filter: blur(15px);
 }
-
 
 .reservation::after {
   content: "";
 
   position: absolute;
 
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
 
-  right: -100px;
   bottom: -150px;
+  left: -100px;
 
   border-radius: 50%;
 
-  background: #e63946;
+  background: rgba(151, 222, 62, 0.13);
 
-  opacity: 0.3;
-
-  filter: blur(40px);
-
-  z-index: 1;
-
-  pointer-events: none;
+  filter: blur(15px);
 }
-
-
-/* =========================================================
-   CONTENT
-========================================================= */
 
 .reservation-content {
   position: relative;
-
-  z-index: 3;
+  z-index: 2;
 
   width: 100%;
+  max-width: 800px;
 
-  max-width: 850px;
-
-  padding: 55px 45px;
+  padding: 55px 50px;
 
   text-align: center;
 
-  color: #ffffff;
-
+  border: 1px solid rgba(112, 238, 145, 0.2);
   border-radius: 35px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0.04)
+      rgba(10, 71, 37, 0.65),
+      rgba(3, 28, 15, 0.68)
     );
 
-  border: 1px solid rgba(255, 255, 255, 0.15);
-
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px);
 
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.35);
 }
 
-
-/* =========================================================
-   LABEL
-========================================================= */
-
 .reservation-label {
   display: inline-flex;
-
   align-items: center;
+  gap: 8px;
 
-  gap: 10px;
-
-  margin-bottom: 22px;
-
-  padding: 10px 18px;
+  margin-bottom: 20px;
+  padding: 8px 15px;
 
   border-radius: 50px;
 
-  background: #ff9d00;
+  background: rgba(62, 220, 109, 0.18);
 
-  color: #241006;
+  color: #6aed94;
 
   font-size: 11px;
-
   font-weight: 800;
-
-  letter-spacing: 3px;
-
+  letter-spacing: 2px;
   text-transform: uppercase;
-
-  box-shadow:
-    0 10px 30px rgba(255, 157, 0, 0.3);
 }
-
-
-/* Label dot */
 
 .reservation-label::before {
   content: "";
@@ -177,302 +120,142 @@
 
   border-radius: 50%;
 
-  background: #e63946;
-
-  box-shadow:
-    0 0 12px #e63946;
+  background: #6aed94;
 }
-
-
-/* =========================================================
-   HEADING
-========================================================= */
 
 .reservation-content h2 {
   margin: 0 0 25px;
 
-  font-size: clamp(3.5rem, 8vw, 7rem);
+  color: #fff;
 
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
   line-height: 0.88;
 
   font-weight: 800;
 
   letter-spacing: -4px;
-
-  color: #ffffff;
 }
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
 
 .reservation-text {
-  max-width: 600px;
-
-  margin: 0 auto 50px;
-
-  font-size: 17px;
-
-  line-height: 1.8;
-
-  color: rgba(255, 255, 255, 0.75);
-}
-
-
-/* =========================================================
-   OPENING HOURS
-========================================================= */
-
-.opening-hours {
-  max-width: 620px;
+  max-width: 550px;
 
   margin: 0 auto 45px;
 
-  padding: 28px 0;
+  color: rgba(255, 255, 255, 0.7);
 
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 16px;
+  line-height: 1.8;
 }
 
+.opening-hours {
+  max-width: 600px;
 
-/* Hours title */
+  margin: 0 auto 40px;
+
+  padding: 25px 0;
+
+  border-top: 1px solid rgba(99, 235, 139, 0.2);
+  border-bottom: 1px solid rgba(99, 235, 139, 0.2);
+}
 
 .hours-title {
-  display: inline-block;
+  display: block;
 
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 
-  padding: 7px 14px;
-
-  border-radius: 50px;
-
-  background: rgba(255, 183, 3, 0.12);
-
-  color: #ffb703;
+  color: #69eb93;
 
   font-size: 11px;
-
   font-weight: 800;
-
   letter-spacing: 3px;
-
   text-transform: uppercase;
 }
 
-
-/* Hours row */
-
 .hours-row {
   display: flex;
-
   justify-content: space-between;
-
-  align-items: center;
 
   gap: 30px;
 
-  margin-bottom: 13px;
+  margin-bottom: 12px;
 
   padding: 8px 12px;
 
   border-radius: 10px;
 
-  font-size: 14px;
-
   color: rgba(255, 255, 255, 0.8);
 
-  transition:
-    background 0.3s ease,
-    padding 0.3s ease;
+  font-size: 14px;
+
+  transition: background 0.25s ease;
 }
-
-
-/* Hover */
 
 .hours-row:hover {
-  padding-left: 18px;
-
-  background: rgba(255, 157, 0, 0.08);
+  background: rgba(69, 226, 116, 0.1);
 }
-
 
 .hours-row:last-child {
   margin-bottom: 0;
 }
 
-
-/* Time */
-
-.hours-row span:last-child {
-  color: #ffb703;
-
-  font-weight: 700;
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
 .reservation-button {
   display: inline-flex;
-
   align-items: center;
-
-  justify-content: center;
-
   gap: 12px;
 
-  padding: 17px 32px;
+  padding: 15px 24px;
 
   border-radius: 50px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #ffb703,
-      #fb8500
-    );
+  background: linear-gradient(
+    135deg,
+    #62ea8b,
+    #159d56
+  );
 
-  color: #241006;
+  color: #06200f;
 
   text-decoration: none;
 
   font-size: 14px;
-
   font-weight: 800;
 
   box-shadow:
-    0 15px 35px rgba(251, 133, 0, 0.3);
+    0 15px 35px rgba(25, 188, 91, 0.25);
 
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+    box-shadow 0.3s ease;
 }
-
-
-/* Arrow */
 
 .reservation-button::after {
   content: "→";
-
-  font-size: 20px;
-
-  transition:
-    transform 0.3s ease;
 }
-
-
-/* Hover */
 
 .reservation-button:hover {
-  transform: translateY(-5px);
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffd166,
-      #ff8c00
-    );
+  transform: translateY(-4px);
 
   box-shadow:
-    0 20px 45px rgba(251, 133, 0, 0.45);
+    0 20px 45px rgba(25, 188, 91, 0.38);
 }
 
-
-.reservation-button:hover::after {
-  transform: translateX(5px);
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 768px) {
-
+@media (max-width: 700px) {
   .reservation {
     min-height: 650px;
-
-    padding: 90px 5%;
-  }
-
-  .reservation-content {
-    padding: 50px 30px;
-
-    border-radius: 30px;
-  }
-
-  .reservation-content h2 {
-    font-size: clamp(3.2rem, 13vw, 5.5rem);
-
-    letter-spacing: -3px;
-  }
-
-  .reservation-text {
-    font-size: 15px;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 500px) {
-
-  .reservation {
-    min-height: 680px;
-
     padding: 70px 5%;
   }
 
   .reservation-content {
-    padding: 45px 20px;
-
-    border-radius: 25px;
+    padding: 40px 22px;
+    border-radius: 28px;
   }
 
   .reservation-content h2 {
-    font-size: 3.4rem;
-
+    font-size: 3.5rem;
     letter-spacing: -2px;
   }
 
-  .reservation-text {
-    margin-bottom: 40px;
-
-    font-size: 14px;
-  }
-
-  .opening-hours {
-    margin-bottom: 35px;
-
-    padding: 25px 0;
-  }
-
   .hours-row {
-    flex-direction: column;
-
-    gap: 5px;
-
-    text-align: center;
-
-    padding: 10px;
-  }
-
-  .hours-row:hover {
-    padding-left: 10px;
-  }
-
-  .hours-row span:last-child {
-    color: #ffb703;
-  }
-
-  .reservation-button {
-    width: 100%;
+    font-size: 13px;
   }
 }

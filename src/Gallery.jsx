@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./Gallery.css";
 
-import food1 from "./assets/food4.png";
+import food1 from "./assets/mix.jpg";
 import food2 from "./assets/food6.png";
 import food3 from "./assets/food7.png";
-import food4 from "./assets/about.jpg";
+import food4 from "./assets/mix1.jpg";
 import food5 from "./assets/food.png";
-import food6 from "./assets/dining.jpg";
+import food6 from "./assets/mix2.jpg";
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);

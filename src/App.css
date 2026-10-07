@@ -1,106 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Momo+Signature&family=DM+Sans:wght@400;500;700;800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-
-/* ================================
-   GLOBAL RESET
-================================ */
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-
 html {
   width: 100%;
-
+  min-height: 100%;
+  background: #06140d;
   scroll-behavior: smooth;
-
   scroll-padding-top: 80px;
-
-  background: #070b16;
 }
-
 
 body {
   width: 100%;
-  min-height: 100vh;
-
-  background: #070b16;
-
+  min-height: 100%;
+  background: #06140d;
   color: #fff;
-
   font-family: 'DM Sans', sans-serif;
-
   overflow-x: hidden;
-
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
-
 
 #root {
-  position: relative;
-
   width: 100%;
   min-height: 100vh;
-
   overflow-x: hidden;
 }
 
-
-/* ================================
-   SELECTION
-================================ */
-
 ::selection {
-  background: #ffb000;
-
-  color: #111;
+  background: #25c76f;
+  color: #031008;
 }
-
-
-/* ================================
-   SCROLLBAR
-================================ */
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070b16;
+  background: #071a10;
 }
 
 ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    #39e47e,
+    #0b8f4d
+  );
   border-radius: 20px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffb000,
-      #ff5a1f
-    );
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ffb000;
-}
-
-
-/* ================================
-   LINKS
-================================ */
 
 a {
   color: inherit;
 }
-
-
-/* ================================
-   BUTTONS
-================================ */
 
 button,
 input,
@@ -108,186 +61,106 @@ textarea {
   font-family: inherit;
 }
 
-
-/* ================================
-   IMAGES
-================================ */
-
 img {
   max-width: 100%;
-
-  display: block;
 }
-
-
-/* ================================
-   INTRO
-================================ */
 
 .intro {
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-
+  position: relative;
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
+  min-height: 100vh;
   background:
     radial-gradient(
-      circle at center,
-      rgba(255, 145, 0, 0.12),
-      transparent 35%
+      circle at 50% 40%,
+      rgba(31, 207, 108, 0.25),
+      transparent 30%
     ),
-    #070b16;
+    #06140d;
 
-  animation:
-    revealText 2.5s ease-in-out infinite;
+  animation: revealText 2.5s ease-in-out infinite;
 }
-
 
 .intro ul {
   display: flex;
-
   gap: 30px;
-
-  list-style: none;
 }
-
-
-/* ================================
-   GLOBAL NAVBAR HELPERS
-================================ */
 
 .navbar {
   display: flex;
-
   justify-content: space-between;
-
-  align-items: center;
-
   padding: 20px;
 }
 
-
 .menu {
   display: flex;
-
-  align-items: center;
-
   gap: 50px;
 }
 
-
-/* ================================
-   SCROLL REVEAL
-================================ */
-
 .reveal {
   opacity: 0;
-
   transform: translateY(60px);
-
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
 }
 
-
 .reveal.show {
   opacity: 1;
-
   transform: translateY(0);
 }
 
+.text-green {
+  color: #35df78;
+}
 
-/* ================================
-   INTRO ANIMATION
-================================ */
+.text-lime {
+  color: #a8e63f;
+}
 
 @keyframes revealText {
-
   0% {
     opacity: 0;
-
     transform: scale(0.95);
-
     letter-spacing: 8px;
   }
 
   35% {
     opacity: 1;
-
     transform: scale(1);
-
     letter-spacing: 2px;
   }
 
   70% {
     opacity: 1;
-
     transform: scale(1);
-
     letter-spacing: 2px;
   }
 
   100% {
     opacity: 0;
-
     transform: scale(1.05);
-
     letter-spacing: 8px;
   }
 }
 
-
-/* ================================
-   GLOBAL COLOR HELPERS
-================================ */
-
-.text-orange {
-  color: #ffb000;
-}
-
-.text-red {
-  color: #ff4d24;
-}
-
-
-/* ================================
-   MOBILE
-================================ */
-
 @media (max-width: 768px) {
-
-  html {
-    scroll-padding-top: 70px;
-  }
-
   .menu {
     gap: 20px;
-  }
-
-  .intro {
-    min-height: 100svh;
   }
 
   .intro ul {
     gap: 15px;
   }
+
+  html {
+    scroll-padding-top: 70px;
+  }
 }
 
-
-/* ================================
-   REDUCED MOTION
-================================ */
-
 @media (prefers-reduced-motion: reduce) {
-
   html {
     scroll-behavior: auto;
   }
