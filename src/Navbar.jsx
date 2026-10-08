@@ -14,19 +14,33 @@ function Navbar() {
     setOpen((prev) => !prev);
   };
 
+  const toggleCart = () => {
+    window.dispatchEvent(
+      new Event("toggleCart")
+    );
+
+    setOpen(false);
+  };
+
   return (
     <header className="navbar">
 
-      {/* Logo Image */}
-      <a href="#home" onClick={closeMenu}>
+      {/* LOGO IMAGE */}
+
+      <a
+        href="#home"
+        onClick={closeMenu}
+      >
         <img
           src={Logo}
           alt="The Mix"
-          style={{ width: "100px" }}
+          className="navbar-logo-image"
         />
       </a>
 
-      {/* Text Logo */}
+
+      {/* TEXT LOGO */}
+
       <a
         href="#home"
         className="logo"
@@ -35,20 +49,32 @@ function Navbar() {
         The Mix
       </a>
 
+
       {/* ================================
           DESKTOP NAVIGATION
       ================================= */}
 
       <nav className="desktop-nav">
-        <a href="#home">Home</a>
 
-        <a href="#about">About</a>
+        <a href="#home">
+          Home
+        </a>
 
-        <a href="#menu">Menu</a>
+        <a href="#about">
+          About
+        </a>
 
-        <a href="#gallery">Gallery</a>
+        <a href="#menu">
+          Menu
+        </a>
 
-        <a href="#contact">Contact</a>
+        <a href="#gallery">
+          Gallery
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
 
         <a
           href="#reservation"
@@ -56,30 +82,80 @@ function Navbar() {
         >
           Book a Table
         </a>
+
+
+        {/* CART BUTTON */}
+
+        <button
+          type="button"
+          className="nav-cart-btn"
+          onClick={toggleCart}
+          aria-label="Toggle shopping cart"
+        >
+          <span className="nav-cart-icon">
+            🛒
+          </span>
+
+          <span>
+            Cart
+          </span>
+        </button>
+
       </nav>
 
+
       {/* ================================
-          MOBILE MENU BUTTON
+          MOBILE ACTIONS
       ================================= */}
 
-      <button
-        type="button"
-        className={`menu-btn ${open ? "active" : ""}`}
-        onClick={toggleMenu}
-        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        aria-expanded={open}
-      >
-        <span></span>
-      </button>
+      <div className="mobile-actions">
+
+        {/* CART */}
+
+        <button
+          type="button"
+          className="mobile-cart-btn"
+          onClick={toggleCart}
+          aria-label="Toggle shopping cart"
+        >
+          <span className="nav-cart-icon">
+            🛒
+          </span>
+        </button>
+
+
+        {/* HAMBURGER */}
+
+        <button
+          type="button"
+          className={`menu-btn ${
+            open ? "active" : ""
+          }`}
+          onClick={toggleMenu}
+          aria-label={
+            open
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
+          aria-expanded={open}
+        >
+          <span></span>
+        </button>
+
+      </div>
+
 
       {/* ================================
           MOBILE MENU
       ================================= */}
 
       <nav
-        className={`mobile-menu ${open ? "open" : ""}`}
+        className={`mobile-menu ${
+          open ? "open" : ""
+        }`}
         aria-hidden={!open}
       >
+
         <a
           href="#home"
           onClick={closeMenu}
@@ -122,6 +198,7 @@ function Navbar() {
         >
           Book a Table
         </a>
+
       </nav>
 
     </header>

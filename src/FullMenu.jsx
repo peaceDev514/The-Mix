@@ -1,6 +1,9 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./FullMenu.css";
+
+const CART_STORAGE_KEY = "theMixCart";
+const WHATSAPP_NUMBER = "2349011445400";
 
 const menuCategories = [
   {
@@ -219,165 +222,213 @@ const menuCategories = [
       ["Sprite", "₦600"],
     ],
   },
-
-  /* LOUNGE DRINKS — INDIVIDUAL CATEGORIES */
-
-  {
-    id: "lounge-beer",
-    title: "Beer",
-    subtitle: "Lounge beer selection",
-    emoji: "🍺",
-    items: [
-      ["Lounge Beer Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-energy-drinks",
-    title: "Energy Drinks",
-    subtitle: "Energy drink selection",
-    emoji: "⚡",
-    items: [
-      ["Energy Drink Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-soft-drinks",
-    title: "Soft Drinks / Water / Malt",
-    subtitle: "Soft drinks, water & malt selection",
-    emoji: "🥤",
-    items: [
-      ["Soft Drinks / Water / Malt Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-wine",
-    title: "Wine",
-    subtitle: "Wine selection",
-    emoji: "🍷",
-    items: [
-      ["Wine Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-whisky",
-    title: "Whisky",
-    subtitle: "Whisky selection",
-    emoji: "🥃",
-    items: [
-      ["Whisky Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-vodka",
-    title: "Vodka",
-    subtitle: "Vodka selection",
-    emoji: "🍸",
-    items: [
-      ["Vodka Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-gin",
-    title: "Gin",
-    subtitle: "Gin selection",
-    emoji: "🍸",
-    items: [
-      ["Gin Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-champagne",
-    title: "Champagne / Sparkling Wine",
-    subtitle: "Sparkling selection",
-    emoji: "🥂",
-    items: [
-      ["Champagne / Sparkling Wine Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-cognac",
-    title: "Cognac",
-    subtitle: "Cognac selection",
-    emoji: "🥃",
-    items: [
-      ["Cognac Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-tequila",
-    title: "Tequila",
-    subtitle: "Tequila selection",
-    emoji: "🌵",
-    items: [
-      ["Tequila Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-rum",
-    title: "Rum",
-    subtitle: "Rum selection",
-    emoji: "🥃",
-    items: [
-      ["Rum Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-cream-blended",
-    title: "Cream / Blended Liquor",
-    subtitle: "Cream & blended selection",
-    emoji: "🍶",
-    items: [
-      ["Cream / Blended Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-bitters",
-    title: "Bitters / Other Alcoholic Drinks",
-    subtitle: "Lounge selection",
-    emoji: "🍹",
-    items: [
-      ["Bitters / Other Lounge Selection", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-shisha",
-    title: "Shisha",
-    subtitle: "Lounge service",
-    emoji: "💨",
-    items: [
-      ["Shisha Service", "See lounge menu"],
-    ],
-  },
-
-  {
-    id: "lounge-juices-mixers",
-    title: "Juices / Mixers",
-    subtitle: "Juices and mixers",
-    emoji: "🍹",
-    items: [
-      ["Juices / Mixers Selection", "See lounge menu"],
-    ],
-  },
 ];
+
+/* =========================================
+   HELPERS
+========================================= */
+
+function getPrices(priceText) {
+  if (!priceText) return [];
+
+  const matches = priceText.match(/₦\s*[\d,]+/g);
+
+  if (!matches) return [];
+
+  return matches.map((value) =>
+    Number(value.replace(/[₦,\s]/g, ""))
+  );
+}
+
+function formatPrice(amount) {
+  return `₦${amount.toLocaleString("en-NG")}`;
+}
+
+/* =========================================
+   COMPONENT
+========================================= */
 
 function FullMenu() {
   const [search, setSearch] = useState("");
 
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = localStorage.getItem(
+        CART_STORAGE_KEY
+      );
+
+      if (!savedCart) return [];
+
+      const parsedCart = JSON.parse(savedCart);
+
+      return Array.isArray(parsedCart)
+        ? parsedCart
+        : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [priceSelector, setPriceSelector] =
+    useState(null);
+
+  /* =========================================
+     SAVE CART
+  ========================================= */
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        CART_STORAGE_KEY,
+        JSON.stringify(cart)
+      );
+
+      window.dispatchEvent(
+        new Event("cartUpdated")
+      );
+    } catch {
+      // Ignore storage errors
+    }
+  }, [cart]);
+
+  /* =========================================
+     ADD TO CART
+  ========================================= */
+
+  const addToCart = (name, price) => {
+    const numericPrice = Number(price);
+
+    if (!numericPrice || numericPrice <= 0) {
+      return;
+    }
+
+    const existingItem = cart.find(
+      (item) =>
+        item.name === name &&
+        item.price === numericPrice
+    );
+
+    if (existingItem) {
+      setCart(
+        cart.map((item) =>
+          item.name === name &&
+          item.price === numericPrice
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
+        )
+      );
+
+      return;
+    }
+
+    const newItem = {
+      id: `${name}-${numericPrice}-${Date.now()}`,
+      name,
+      displayPrice: formatPrice(numericPrice),
+      price: numericPrice,
+      quantity: 1,
+    };
+
+    setCart([...cart, newItem]);
+  };
+
+  /* =========================================
+     SELECT MULTIPLE PRICE
+  ========================================= */
+
+  const handlePriceSelection = (price) => {
+    if (!priceSelector) return;
+
+    addToCart(
+      priceSelector.name,
+      price
+    );
+
+    setPriceSelector(null);
+  };
+
+  /* =========================================
+     INCREASE
+  ========================================= */
+
+  const increaseQuantity = (id) => {
+    setCart(
+      cart.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item
+      )
+    );
+  };
+
+  /* =========================================
+     DECREASE
+  ========================================= */
+
+  const decreaseQuantity = (id) => {
+    setCart(
+      cart
+        .map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item
+        )
+        .filter(
+          (item) => item.quantity > 0
+        )
+    );
+  };
+
+  /* =========================================
+     REMOVE
+  ========================================= */
+
+  const removeFromCart = (id) => {
+    setCart(
+      cart.filter(
+        (item) => item.id !== id
+      )
+    );
+  };
+
+  /* =========================================
+     CART COUNT
+  ========================================= */
+
+  const cartCount = cart.reduce(
+    (total, item) =>
+      total + item.quantity,
+    0
+  );
+
+  /* =========================================
+     CART TOTAL
+  ========================================= */
+
+  const cartTotal = cart.reduce(
+    (total, item) =>
+      total +
+      item.price * item.quantity,
+    0
+  );
+
+  /* =========================================
+     SEARCH
+  ========================================= */
+
   const filteredCategories = useMemo(() => {
-    const query = search.trim().toLowerCase();
+    const query = search
+      .trim()
+      .toLowerCase();
 
     if (!query) {
       return menuCategories;
@@ -386,20 +437,74 @@ function FullMenu() {
     return menuCategories
       .map((category) => ({
         ...category,
-        items: category.items.filter(([name, price]) =>
-          `${name} ${price}`.toLowerCase().includes(query)
+
+        items: category.items.filter(
+          ([name, price]) =>
+            `${name} ${price}`
+              .toLowerCase()
+              .includes(query)
         ),
       }))
-      .filter((category) => category.items.length > 0);
+      .filter(
+        (category) =>
+          category.items.length > 0
+      );
   }, [search]);
+
+  /* =========================================
+     WHATSAPP
+  ========================================= */
+
+  const orderViaWhatsApp = () => {
+    if (cart.length === 0) return;
+
+    const orderLines = cart
+      .map(
+        (item) =>
+          `• ${item.name} x${item.quantity} — ${item.displayPrice}`
+      )
+      .join("\n");
+
+    const message = `
+Hello Table Mamas, I would like to place an order.
+
+${orderLines}
+
+Estimated Total: ${formatPrice(
+      cartTotal
+    )}
+
+Please confirm my order and final price.
+
+Thank you.
+    `.trim();
+
+    const whatsappUrl =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        message
+      )}`;
+
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   return (
     <main className="full-menu-page">
 
+      {/* =====================================
+          HERO
+      ===================================== */}
+
       <section className="full-menu-hero">
         <div className="full-menu-hero-content">
 
-          <Link to="/" className="menu-back">
+          <Link
+            to="/"
+            className="menu-back"
+          >
             ← Back to Home
           </Link>
 
@@ -412,14 +517,21 @@ function FullMenu() {
           </h1>
 
           <p>
-            Delicious meals, freshly prepared favourites,
-            sweet treats and refreshing drinks.
+            Delicious meals, freshly prepared
+            favourites, sweet treats and
+            refreshing drinks.
           </p>
 
         </div>
       </section>
 
+      {/* =====================================
+          MENU CONTENT
+      ===================================== */}
+
       <section className="full-menu-content">
+
+        {/* SEARCH */}
 
         <div className="menu-search-wrapper">
           <div className="menu-search">
@@ -432,13 +544,17 @@ function FullMenu() {
               type="text"
               placeholder="Search our menu..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) =>
+                setSearch(e.target.value)
+              }
             />
 
             {search && (
               <button
                 type="button"
-                onClick={() => setSearch("")}
+                onClick={() =>
+                  setSearch("")
+                }
                 aria-label="Clear search"
               >
                 ×
@@ -448,120 +564,481 @@ function FullMenu() {
           </div>
         </div>
 
+        {/* =====================================
+            CART SUMMARY
+        ===================================== */}
+
+        <div className="full-menu-cart-bar">
+
+          <div className="cart-bar-left">
+
+            <span className="full-menu-cart-icon">
+              🛒
+            </span>
+
+            <div>
+              <strong>Your Cart</strong>
+
+              <small>
+                {cartCount}{" "}
+                {cartCount === 1
+                  ? "item"
+                  : "items"}
+              </small>
+            </div>
+
+          </div>
+
+          <div className="full-menu-cart-summary">
+            <strong>
+              {formatPrice(cartTotal)}
+            </strong>
+          </div>
+
+        </div>
+
+        {/* =====================================
+            CATEGORY NAV
+        ===================================== */}
+
         {!search && (
           <nav className="menu-category-nav">
 
-            {menuCategories.map((category) => (
-              <a
-                href={`#${category.id}`}
-                key={category.id}
-              >
-                <span>{category.emoji}</span>
-                {category.title}
-              </a>
-            ))}
+            {menuCategories.map(
+              (category) => (
+                <a
+                  href={`#${category.id}`}
+                  key={category.id}
+                >
+                  <span>
+                    {category.emoji}
+                  </span>
+
+                  {category.title}
+                </a>
+              )
+            )}
 
           </nav>
         )}
 
+        {/* =====================================
+            MENU LIST
+        ===================================== */}
+
         <div className="full-menu-list">
 
-          {filteredCategories.length > 0 ? (
-            filteredCategories.map((category, index) => (
+          {filteredCategories.length === 0 ? (
+            <div className="menu-no-results">
+              <span>🔎</span>
 
-              <section
-                className="full-menu-category"
-                id={category.id}
-                key={category.id}
-              >
+              <h2>
+                No menu items found
+              </h2>
 
-                <div className="category-heading">
+              <p>
+                Try searching for another
+                meal or drink.
+              </p>
+            </div>
+          ) : (
+            filteredCategories.map(
+              (category, index) => (
 
-                  <div className="category-icon">
-                    {category.emoji}
-                  </div>
+                <section
+                  className="full-menu-category"
+                  id={category.id}
+                  key={category.id}
+                >
 
-                  <div className="category-title">
+                  {/* CATEGORY HEADING */}
 
-                    <span>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                  <div className="category-heading">
 
-                    <div>
-                      <p>{category.subtitle}</p>
-                      <h2>{category.title}</h2>
+                    <div className="category-icon">
+                      {category.emoji}
+                    </div>
+
+                    <div className="category-title">
+
+                      <span>
+                        {String(index + 1).padStart(
+                          2,
+                          "0"
+                        )}
+                      </span>
+
+                      <div>
+                        <p>
+                          {category.subtitle}
+                        </p>
+
+                        <h2>
+                          {category.title}
+                        </h2>
+                      </div>
+
                     </div>
 
                   </div>
 
-                </div>
+                  {/* ITEMS */}
 
-                <div className="menu-list">
+                  <div className="menu-list">
 
-                  {category.items.map(
-                    ([name, price], itemIndex) => (
-                      <div
-                        className="full-menu-item"
-                        key={`${category.id}-${name}-${price}-${itemIndex}`}
-                      >
+                    {category.items.map(
+                      (
+                        [name, price],
+                        itemIndex
+                      ) => {
 
-                        <h3>{name}</h3>
+                        const prices =
+                          getPrices(price);
 
-                        <div className="menu-dots" />
+                        const isOrderable =
+                          prices.length > 0;
 
-                        <span>{price}</span>
+                        const hasMultiplePrices =
+                          prices.length > 1;
 
-                      </div>
-                    )
-                  )}
+                        return (
+                          <div
+                            className="full-menu-item"
+                            key={`${category.id}-${name}-${price}-${itemIndex}`}
+                          >
 
-                </div>
+                            <div className="full-menu-item-name">
+                              <h3>{name}</h3>
+                            </div>
 
-              </section>
-            ))
-          ) : (
+                            <div className="menu-dots"></div>
 
-            <div className="no-results">
+                            <div className="full-menu-price">
+                              {price}
+                            </div>
 
-              <span>🔎</span>
+                            {isOrderable && (
+                              <button
+                                type="button"
+                                className="full-menu-add-btn"
+                                onClick={() => {
 
-              <h2>
-                No menu item matches
-                <br />
-                your search.
-              </h2>
+                                  if (
+                                    hasMultiplePrices
+                                  ) {
+                                    setPriceSelector({
+                                      name,
+                                      prices,
+                                    });
+                                  } else {
+                                    addToCart(
+                                      name,
+                                      prices[0]
+                                    );
+                                  }
 
-              <button
-                type="button"
-                onClick={() => setSearch("")}
-              >
-                View Full Menu
-              </button>
+                                }}
+                              >
+                                {hasMultiplePrices
+                                  ? "Select option"
+                                  : "Add"}
+                              </button>
+                            )}
 
-            </div>
+                            {!isOrderable && (
+                              <span className="full-menu-info">
+                                See options
+                              </span>
+                            )}
+
+                          </div>
+                        );
+                      }
+                    )}
+
+                  </div>
+
+                </section>
+              )
+            )
           )}
 
         </div>
+
+        {/* =====================================
+            CART
+        ===================================== */}
+
+        <section className="full-menu-cart">
+
+          <div className="cart-section-header">
+
+            <div>
+              <span className="cart-section-label">
+                YOUR ORDER
+              </span>
+
+              <h2>
+                Shopping Cart
+              </h2>
+            </div>
+
+            <span className="cart-item-count">
+              {cartCount}{" "}
+              {cartCount === 1
+                ? "item"
+                : "items"}
+            </span>
+
+          </div>
+
+          {cart.length === 0 ? (
+
+            <div className="cart-empty">
+
+              <div className="cart-empty-icon">
+                🛒
+              </div>
+
+              <h3>
+                Your cart is empty
+              </h3>
+
+              <p>
+                Add something delicious
+                from the menu above.
+              </p>
+
+            </div>
+
+          ) : (
+
+            <>
+
+              <div className="cart-items">
+
+                {cart.map((item) => (
+
+                  <div
+                    className="cart-item"
+                    key={item.id}
+                  >
+
+                    <div className="cart-item-info">
+
+                      <h3>
+                        {item.name}
+                      </h3>
+
+                      <span>
+                        {item.displayPrice}
+                      </span>
+
+                    </div>
+
+                    <div className="cart-item-actions">
+
+                      <div className="quantity-control">
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            decreaseQuantity(
+                              item.id
+                            )
+                          }
+                          aria-label="Decrease quantity"
+                        >
+                          −
+                        </button>
+
+                        <span>
+                          {item.quantity}
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            increaseQuantity(
+                              item.id
+                            )
+                          }
+                          aria-label="Increase quantity"
+                        >
+                          +
+                        </button>
+
+                      </div>
+
+                      <strong>
+                        {formatPrice(
+                          item.price *
+                            item.quantity
+                        )}
+                      </strong>
+
+                      <button
+                        type="button"
+                        className="remove-cart-item"
+                        onClick={() =>
+                          removeFromCart(
+                            item.id
+                          )
+                        }
+                      >
+                        Remove
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                ))}
+
+              </div>
+
+              <div className="cart-bottom">
+
+                <div className="cart-total-row">
+
+                  <span>
+                    Estimated Total
+                  </span>
+
+                  <strong>
+                    {formatPrice(
+                      cartTotal
+                    )}
+                  </strong>
+
+                </div>
+
+                <button
+                  type="button"
+                  className="whatsapp-order-btn"
+                  onClick={
+                    orderViaWhatsApp
+                  }
+                >
+                  Order via WhatsApp
+                  <span>→</span>
+                </button>
+
+              </div>
+
+            </>
+          )}
+
+        </section>
+
+        {/* =====================================
+            CTA
+        ===================================== */}
+
+        <div className="full-menu-cta">
+
+          <span>
+            TABLE MAMAS
+          </span>
+
+          <h2>
+            Hungry already?
+          </h2>
+
+          <p>
+            Choose your favourites and
+            send your order directly to us.
+          </p>
+
+          <a
+            href="#food"
+            className="full-menu-cta-btn"
+          >
+            Start Ordering
+          </a>
+
+        </div>
+
       </section>
 
-      <section className="menu-cta">
+      {/* =====================================
+          PRICE SELECTOR MODAL
+      ===================================== */}
 
-        <span>Hungry already?</span>
-
-        <h2>
-          Good food is
-          <br />
-          <em>waiting for you.</em>
-        </h2>
-
-        <Link
-          to="/#contact"
-          className="get-in-touch"
+      {priceSelector && (
+        <div
+          className="price-selector-overlay"
+          onClick={() =>
+            setPriceSelector(null)
+          }
         >
-          Get in Touch
-        </Link>
 
-      </section>
+          <div
+            className="price-selector-modal"
+            onClick={(e) =>
+              e.stopPropagation()
+            }
+          >
+
+            <button
+              type="button"
+              className="price-selector-close"
+              onClick={() =>
+                setPriceSelector(null)
+              }
+              aria-label="Close price selector"
+            >
+              ×
+            </button>
+
+            <span className="price-selector-label">
+              SELECT OPTION
+            </span>
+
+            <h2>
+              {priceSelector.name}
+            </h2>
+
+            <p>
+              Choose the price option you
+              want to add to your cart.
+            </p>
+
+            <div className="price-selector-options">
+
+              {priceSelector.prices.map(
+                (price) => (
+
+                  <button
+                    type="button"
+                    className="price-option"
+                    key={price}
+                    onClick={() =>
+                      handlePriceSelection(
+                        price
+                      )
+                    }
+                  >
+
+                    <span>
+                      {formatPrice(price)}
+                    </span>
+
+                    <span className="price-option-arrow">
+                      →
+                    </span>
+
+                  </button>
+
+                )
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+      )}
 
     </main>
   );

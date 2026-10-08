@@ -505,3 +505,166 @@
     transition: none;
   }
 }
+
+/* ================================
+   NAVBAR LOGO IMAGE
+================================ */
+
+.navbar-logo-image {
+  width: 100px;
+  height: auto;
+  display: block;
+}
+
+
+/* ================================
+   DESKTOP CART BUTTON
+================================ */
+
+.nav-cart-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 17px;
+
+  border: 1px solid rgba(101, 234, 145, 0.3);
+  border-radius: 50px;
+
+  background: rgba(101, 234, 145, 0.08);
+
+  color: #65ea91;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav-cart-btn:hover {
+  background: #65ea91;
+
+  color: #06200f;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px rgba(101, 234, 145, 0.18);
+}
+
+.nav-cart-icon {
+  font-size: 17px;
+
+  line-height: 1;
+}
+
+
+/* ================================
+   MOBILE ACTIONS
+================================ */
+
+.mobile-actions {
+  display: none;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* ================================
+   MOBILE CART BUTTON
+================================ */
+
+.mobile-cart-btn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(101, 234, 145, 0.3);
+  border-radius: 50%;
+
+  background: rgba(101, 234, 145, 0.08);
+
+  color: #65ea91;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mobile-cart-btn:hover {
+  background: #65ea91;
+
+  color: #06200f;
+
+  transform: translateY(-2px);
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  /* Hide desktop navigation */
+
+  .desktop-nav {
+    display: none;
+  }
+
+
+  /* Show cart + hamburger */
+
+  .mobile-actions {
+    display: flex;
+  }
+
+
+  .navbar-logo-image {
+    width: 80px;
+  }
+
+
+  .nav-cart-icon {
+    font-size: 16px;
+  }
+
+}
+
+
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media (max-width: 400px) {
+
+  .mobile-actions {
+    gap: 7px;
+  }
+
+  .mobile-cart-btn {
+    width: 39px;
+    height: 39px;
+  }
+
+}
