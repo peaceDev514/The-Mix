@@ -1,12 +1,12 @@
+
 /* ================================
-   NAVBAR
+   NAVBAR — PREMIUM RESTAURANT THEME
 ================================ */
 
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-
   z-index: 1000;
 
   width: 100%;
@@ -18,31 +18,53 @@
 
   padding: 0 5%;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3, 20, 12, 0.96),
-      rgba(4, 34, 19, 0.9)
-    );
+  background: linear-gradient(
+    100deg,
+    rgba(20, 20, 20, 0.97),
+    rgba(37, 25, 23, 0.95),
+    rgba(18, 18, 18, 0.97)
+  );
 
-  border-bottom: 1px solid rgba(91, 232, 132, 0.18);
+  border-bottom: 1px solid rgba(245, 197, 24, 0.24);
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
 }
 
+/* Subtle yellow-to-red accent */
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 5%;
+  width: 90%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 197, 24, 0.7),
+    rgba(214, 40, 40, 0.65),
+    transparent
+  );
+
+  pointer-events: none;
+}
 
 /* ================================
-   LOGO
+   TEXT LOGO
 ================================ */
 
 .logo {
   position: relative;
 
-  color: #fff;
-
+  color: #ffffff;
   font-size: 25px;
-  font-weight: 800;
+  font-weight: 900;
+  letter-spacing: -0.8px;
 
   text-decoration: none;
 
@@ -51,30 +73,44 @@
 
 .logo::after {
   content: "";
-
   position: absolute;
-
   left: 0;
-  bottom: -5px;
+  bottom: -7px;
 
   width: 35px;
   height: 3px;
 
   border-radius: 10px;
 
-  background: #42df78;
+  background: linear-gradient(90deg, #f5c518, #d62828);
 
-  transition: width 0.3s ease;
+  transition: width 0.35s ease;
 }
 
 .logo:hover {
-  color: #61eb8e;
+  color: #f5c518;
 }
 
 .logo:hover::after {
   width: 100%;
 }
 
+/* ================================
+   LOGO IMAGE
+================================ */
+
+.navbar-logo-image {
+  display: block;
+  width: 100px;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo-image:hover {
+  transform: scale(1.04);
+}
 
 /* ================================
    DESKTOP NAVIGATION
@@ -83,52 +119,46 @@
 .desktop-nav {
   display: flex;
   align-items: center;
-
-  gap: 32px;
+  gap: 30px;
 }
 
 .desktop-nav a {
   position: relative;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.83);
 
   text-decoration: none;
-
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 650;
 
   transition: color 0.25s ease;
 }
 
 .desktop-nav a::after {
   content: "";
-
   position: absolute;
-
   left: 0;
-  bottom: -8px;
+  bottom: -9px;
 
   width: 0;
   height: 2px;
 
   border-radius: 10px;
-
-  background: #46df79;
+  background: linear-gradient(90deg, #f5c518, #d62828);
 
   transition: width 0.3s ease;
 }
 
 .desktop-nav a:hover {
-  color: #5aeb8b;
+  color: #f5c518;
 }
 
 .desktop-nav a:hover::after {
   width: 100%;
 }
 
-
 /* ================================
-   DESKTOP RESERVATION BUTTON
+   RESERVATION BUTTON
 ================================ */
 
 .nav-btn {
@@ -138,25 +168,23 @@
 
   padding: 12px 21px;
 
+  border: 1px solid #f5c518;
   border-radius: 50px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #58e983,
-      #149d56
-    );
+  background: linear-gradient(135deg, #f5c518, #ffdc55);
 
-  color: #031008 !important;
+  color: #171717 !important;
+  text-decoration: none;
 
-  font-weight: 800 !important;
+  font-weight: 900 !important;
 
-  box-shadow:
-    0 10px 25px rgba(23, 180, 87, 0.22);
+  box-shadow: 0 8px 24px rgba(245, 197, 24, 0.17);
 
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease;
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
 }
 
 .nav-btn::after {
@@ -164,12 +192,109 @@
 }
 
 .nav-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 
-  box-shadow:
-    0 15px 30px rgba(23, 180, 87, 0.35);
+  border-color: #d62828;
+  background: linear-gradient(135deg, #e83b3b, #d62828);
+
+  color: #ffffff !important;
+
+  box-shadow: 0 12px 30px rgba(214, 40, 40, 0.28);
 }
 
+/* ================================
+   DESKTOP CART BUTTON
+================================ */
+
+.nav-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 17px;
+
+  border: 1px solid rgba(245, 197, 24, 0.45);
+  border-radius: 50px;
+
+  background: rgba(245, 197, 24, 0.08);
+  color: #f5c518;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 850;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav-cart-btn:hover {
+  transform: translateY(-2px);
+
+  border-color: #f5c518;
+  background: #f5c518;
+  color: #171717;
+
+  box-shadow: 0 8px 24px rgba(245, 197, 24, 0.2);
+}
+
+.nav-cart-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+/* ================================
+   MOBILE ACTIONS
+================================ */
+
+.mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ================================
+   MOBILE CART BUTTON
+================================ */
+
+.mobile-cart-btn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(245, 197, 24, 0.42);
+  border-radius: 50%;
+
+  background: rgba(245, 197, 24, 0.08);
+  color: #f5c518;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.mobile-cart-btn:hover {
+  transform: translateY(-2px);
+
+  border-color: #f5c518;
+  background: #f5c518;
+  color: #171717;
+}
 
 /* ================================
    MOBILE MENU BUTTON
@@ -186,10 +311,10 @@
 
   padding: 0;
 
-  border: 1px solid rgba(79, 231, 126, 0.4);
+  border: 1px solid rgba(245, 197, 24, 0.4);
   border-radius: 50%;
 
-  background: rgba(20, 133, 69, 0.18);
+  background: rgba(245, 197, 24, 0.08);
 
   cursor: pointer;
 
@@ -200,11 +325,9 @@
 }
 
 .menu-btn:hover {
-  background: rgba(20, 133, 69, 0.3);
-
-  border-color: rgba(79, 231, 126, 0.7);
+  border-color: #f5c518;
+  background: rgba(245, 197, 24, 0.16);
 }
-
 
 /* ================================
    HAMBURGER ICON
@@ -218,9 +341,13 @@
   width: 19px;
   height: 2px;
 
-  background: #62ea8c;
+  border-radius: 5px;
+  background: #f5c518;
 
-  transition: 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    top 0.3s ease;
 }
 
 .menu-btn span {
@@ -230,9 +357,7 @@
 .menu-btn span::before,
 .menu-btn span::after {
   content: "";
-
   position: absolute;
-
   left: 0;
 }
 
@@ -244,15 +369,13 @@
   top: 7px;
 }
 
-
 /* ================================
    ACTIVE / CLOSE BUTTON
 ================================ */
 
 .menu-btn.active {
-  background: #54e983;
-
-  border-color: #54e983;
+  border-color: #d62828;
+  background: #d62828;
 }
 
 .menu-btn.active span {
@@ -261,87 +384,68 @@
 
 .menu-btn.active span::before {
   top: 0;
-
   transform: rotate(45deg);
-
-  background: #06200f;
+  background: #ffffff;
 }
 
 .menu-btn.active span::after {
   top: 0;
-
   transform: rotate(-45deg);
-
-  background: #06200f;
+  background: #ffffff;
 }
-
 
 /* ================================
    MOBILE MENU
 ================================ */
 
-/*
-   IMPORTANT:
-   The menu is HIDDEN by default.
-   It only appears when the JSX has
-   the "open" class.
-*/
-
 .mobile-menu {
   position: fixed;
-
   top: 82px;
   left: 0;
-
   z-index: 999;
 
   width: 100%;
-  min-height: calc(100vh - 82px);
+  height: calc(100vh - 82px);
+  height: calc(100dvh - 82px);
+  min-height: 400px;
 
-  /* FIX: HIDDEN BY DEFAULT */
   display: none;
-
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   gap: 25px;
-
-  padding: 50px 8%;
+  padding: 45px 8%;
 
   overflow-y: auto;
 
   background:
     radial-gradient(
-      circle at 80% 15%,
-      rgba(55, 223, 118, 0.25),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 15% 80%,
-      rgba(127, 218, 55, 0.15),
+      circle at 85% 12%,
+      rgba(245, 197, 24, 0.16),
       transparent 30%
     ),
-    #061a0e;
+    radial-gradient(
+      circle at 10% 85%,
+      rgba(214, 40, 40, 0.2),
+      transparent 32%
+    ),
+    linear-gradient(145deg, #1c1a19, #101010);
 
-  border-top: 1px solid rgba(91, 232, 132, 0.15);
+  border-top: 1px solid rgba(245, 197, 24, 0.2);
 }
 
-
-/* ================================
-   SHOW MOBILE MENU
-================================ */
+/* Show only when JSX applies .open */
 
 .mobile-menu.open {
   display: flex;
-
-  animation: mobileMenuReveal 0.3s ease forwards;
+  animation: mobileMenuReveal 0.3s ease both;
 }
 
 @keyframes mobileMenuReveal {
   from {
     opacity: 0;
-    transform: translateY(-15px);
+    transform: translateY(-12px);
   }
 
   to {
@@ -350,18 +454,18 @@
   }
 }
 
-
 /* ================================
    MOBILE MENU LINKS
 ================================ */
 
 .mobile-menu a {
-  color: #fff;
+  color: #ffffff;
 
   text-decoration: none;
 
   font-size: clamp(2.2rem, 9vw, 4rem);
-  font-weight: 800;
+  font-weight: 850;
+  letter-spacing: -1px;
 
   transition:
     color 0.25s ease,
@@ -369,60 +473,55 @@
 }
 
 .mobile-menu a:hover {
-  color: #58e983;
-
-  transform: translateX(8px);
+  color: #f5c518;
+  transform: translateX(7px);
 }
-
 
 /* ================================
    MOBILE RESERVATION BUTTON
 ================================ */
 
 .mobile-menu .mobile-reserve {
-  margin-top: 20px;
-
+  margin-top: 18px;
   padding: 15px 28px;
 
+  border: 1px solid #f5c518;
   border-radius: 50px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #58e983,
-      #149d56
-    ) !important;
+  background: linear-gradient(135deg, #f5c518, #ffdc55);
 
-  color: #031008 !important;
+  color: #171717 !important;
 
   font-size: 15px !important;
+  font-weight: 900;
 
-  box-shadow:
-    0 10px 25px rgba(23, 180, 87, 0.25);
+  box-shadow: 0 10px 25px rgba(245, 197, 24, 0.16);
 
   transition:
     transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
 .mobile-menu .mobile-reserve:hover {
-  color: #031008 !important;
+  transform: translateY(-3px);
 
-  transform: translateY(-2px);
+  border-color: #d62828;
+  background: #d62828;
 
-  box-shadow:
-    0 15px 30px rgba(23, 180, 87, 0.4);
+  color: #ffffff !important;
+
+  box-shadow: 0 15px 30px rgba(214, 40, 40, 0.28);
 }
 
-
 /* ================================
-   MOBILE / TABLET
+   TABLET / MOBILE
 ================================ */
 
 @media (max-width: 768px) {
   .navbar {
     height: 72px;
-
     padding: 0 5%;
   }
 
@@ -430,8 +529,17 @@
     font-size: 22px;
   }
 
+  .navbar-logo-image {
+    width: 80px;
+    max-height: 56px;
+  }
+
   .desktop-nav {
     display: none;
+  }
+
+  .mobile-actions {
+    display: flex;
   }
 
   .menu-btn {
@@ -440,11 +548,10 @@
 
   .mobile-menu {
     top: 72px;
-
-    min-height: calc(100vh - 72px);
+    height: calc(100vh - 72px);
+    height: calc(100dvh - 72px);
   }
 }
-
 
 /* ================================
    SMALL PHONES
@@ -459,15 +566,27 @@
     font-size: 20px;
   }
 
+  .navbar-logo-image {
+    width: 72px;
+  }
+
+  .mobile-actions {
+    gap: 7px;
+  }
+
   .menu-btn {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile-cart-btn {
+    width: 39px;
+    height: 39px;
   }
 
   .mobile-menu {
     gap: 20px;
-
-    padding: 40px 6%;
+    padding: 35px 6%;
   }
 
   .mobile-menu a {
@@ -476,195 +595,41 @@
 
   .mobile-menu .mobile-reserve {
     padding: 13px 23px;
-
     font-size: 14px !important;
   }
 }
 
-
 /* ================================
-   REDUCED MOTION
+   ACCESSIBILITY
 ================================ */
 
-@media (prefers-reduced-motion: reduce) {
-  .mobile-menu.open {
-    animation: none;
-  }
+.navbar a:focus-visible,
+.navbar button:focus-visible,
+.mobile-menu a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
 
+@media (prefers-reduced-motion: reduce) {
   .logo,
   .logo::after,
+  .navbar-logo-image,
   .desktop-nav a,
   .desktop-nav a::after,
   .nav-btn,
+  .nav-cart-btn,
   .menu-btn,
   .menu-btn span,
   .menu-btn span::before,
   .menu-btn span::after,
+  .mobile-cart-btn,
   .mobile-menu a,
   .mobile-reserve {
     transition: none;
   }
-}
 
-/* ================================
-   NAVBAR LOGO IMAGE
-================================ */
-
-.navbar-logo-image {
-  width: 100px;
-  height: auto;
-  display: block;
-}
-
-
-/* ================================
-   DESKTOP CART BUTTON
-================================ */
-
-.nav-cart-btn {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-
-  padding: 10px 17px;
-
-  border: 1px solid rgba(101, 234, 145, 0.3);
-  border-radius: 50px;
-
-  background: rgba(101, 234, 145, 0.08);
-
-  color: #65ea91;
-
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 800;
-
-  cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.nav-cart-btn:hover {
-  background: #65ea91;
-
-  color: #06200f;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 25px rgba(101, 234, 145, 0.18);
-}
-
-.nav-cart-icon {
-  font-size: 17px;
-
-  line-height: 1;
-}
-
-
-/* ================================
-   MOBILE ACTIONS
-================================ */
-
-.mobile-actions {
-  display: none;
-
-  align-items: center;
-
-  gap: 10px;
-}
-
-
-/* ================================
-   MOBILE CART BUTTON
-================================ */
-
-.mobile-cart-btn {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: 1px solid rgba(101, 234, 145, 0.3);
-  border-radius: 50%;
-
-  background: rgba(101, 234, 145, 0.08);
-
-  color: #65ea91;
-
-  cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-.mobile-cart-btn:hover {
-  background: #65ea91;
-
-  color: #06200f;
-
-  transform: translateY(-2px);
-}
-
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 768px) {
-
-  /* Hide desktop navigation */
-
-  .desktop-nav {
-    display: none;
+  .mobile-menu.open {
+    animation: none;
   }
-
-
-  /* Show cart + hamburger */
-
-  .mobile-actions {
-    display: flex;
-  }
-
-
-  .navbar-logo-image {
-    width: 80px;
-  }
-
-
-  .nav-cart-icon {
-    font-size: 16px;
-  }
-
 }
 
-
-/* ================================
-   SMALL PHONES
-================================ */
-
-@media (max-width: 400px) {
-
-  .mobile-actions {
-    gap: 7px;
-  }
-
-  .mobile-cart-btn {
-    width: 39px;
-    height: 39px;
-  }
-
-}

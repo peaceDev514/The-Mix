@@ -12,6 +12,8 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 import FullMenu from "./FullMenu";
 
+import "./Theme.css";
+
 import Reveal from "./Reveal";
 
 import Logo from "./assets/logo.png";
