@@ -1,4 +1,3 @@
-
 /* ================================
    RESERVATION SECTION
 ================================ */
@@ -28,16 +27,15 @@
   z-index: -1;
   inset: 0;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(15, 12, 12, 0.94),
-      rgba(90, 17, 17, 0.78),
-      rgba(15, 12, 12, 0.94)
-    );
+  background: linear-gradient(
+    135deg,
+    rgba(17, 17, 17, 0.96),
+    rgba(48, 20, 20, 0.88),
+    rgba(17, 17, 17, 0.96)
+  );
 }
 
-/* AMBIENT GLOW EFFECTS */
+/* AMBIENT GOLD AND RED GLOW */
 
 .reservation::before,
 .reservation::after {
@@ -54,8 +52,8 @@
   top: -190px;
   right: -110px;
 
-  background: rgba(245, 197, 24, 0.2);
-  filter: blur(35px);
+  background: rgba(245, 197, 24, 0.14);
+  filter: blur(55px);
 }
 
 .reservation::after {
@@ -64,8 +62,8 @@
   bottom: -190px;
   left: -100px;
 
-  background: rgba(214, 40, 40, 0.25);
-  filter: blur(35px);
+  background: rgba(214, 40, 40, 0.18);
+  filter: blur(55px);
 }
 
 /* RESERVATION GLASS PANEL */
@@ -80,23 +78,22 @@
 
   text-align: center;
 
-  border: 1px solid rgba(245, 197, 24, 0.35);
-  border-radius: 35px;
+  border: 1px solid rgba(245, 197, 24, 0.3);
+  border-radius: 32px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(38, 33, 30, 0.88),
-      rgba(20, 17, 17, 0.94)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(38, 33, 30, 0.94),
+    rgba(20, 17, 17, 0.97)
+  );
 
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.42),
-    0 0 45px rgba(214, 40, 40, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 30px 90px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(214, 40, 40, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
   overflow: hidden;
 }
@@ -108,6 +105,7 @@
   position: absolute;
   top: 0;
   left: 12%;
+
   width: 76%;
   height: 3px;
 
@@ -115,7 +113,7 @@
     90deg,
     transparent,
     #f5c518,
-    #ffffff,
+    #ffe066,
     #d62828,
     transparent
   );
@@ -135,7 +133,7 @@
   border: 1px solid rgba(245, 197, 24, 0.35);
   border-radius: 50px;
 
-  background: rgba(245, 197, 24, 0.1);
+  background: rgba(245, 197, 24, 0.08);
   color: #f5c518;
 
   font-size: 11px;
@@ -146,14 +144,14 @@
 
 .reservation-label::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   flex-shrink: 0;
 
   border-radius: 50%;
   background: #f5c518;
 
-  box-shadow: 0 0 13px rgba(245, 197, 24, 0.8);
+  box-shadow: 0 0 12px rgba(245, 197, 24, 0.65);
 }
 
 /* MAIN HEADING */
@@ -164,14 +162,14 @@
   color: #ffffff;
 
   font-size: clamp(3.5rem, 8vw, 6.5rem);
-  line-height: 0.95;
+  line-height: 0.98;
   font-weight: 900;
   letter-spacing: -4px;
 }
 
 .reservation-content h2 span {
   color: #f5c518;
-  text-shadow: 0 0 30px rgba(245, 197, 24, 0.17);
+  text-shadow: 0 0 25px rgba(245, 197, 24, 0.15);
 }
 
 /* DESCRIPTION */
@@ -180,7 +178,7 @@
   max-width: 550px;
   margin: 0 auto 42px;
 
-  color: rgba(255, 255, 255, 0.74);
+  color: rgba(255, 255, 255, 0.76);
 
   font-size: 16px;
   line-height: 1.9;
@@ -195,8 +193,8 @@
   margin: 0 auto 38px;
   padding: 27px 0;
 
-  border-top: 1px solid rgba(245, 197, 24, 0.25);
-  border-bottom: 1px solid rgba(245, 197, 24, 0.25);
+  border-top: 1px solid rgba(245, 197, 24, 0.24);
+  border-bottom: 1px solid rgba(245, 197, 24, 0.24);
 }
 
 .hours-title {
@@ -223,7 +221,7 @@
   border: 1px solid transparent;
   border-radius: 12px;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.84);
 
   font-size: 14px;
   text-align: left;
@@ -238,7 +236,7 @@
   transform: translateX(4px);
 
   border-color: rgba(245, 197, 24, 0.2);
-  background: rgba(245, 197, 24, 0.07);
+  background: rgba(245, 197, 24, 0.05);
 }
 
 .hours-row:last-child {
@@ -266,7 +264,7 @@
   background: linear-gradient(
     135deg,
     #f5c518,
-    #ffdc54
+    #ffe066
   );
 
   color: #171717;
@@ -276,18 +274,20 @@
   font-weight: 900;
 
   box-shadow:
-    0 12px 30px rgba(245, 197, 24, 0.2);
+    0 12px 30px rgba(245, 197, 24, 0.16);
 
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
     background 0.3s ease,
-    color 0.3s ease;
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .reservation-button::after {
   content: "→";
   display: inline-block;
+
   font-size: 20px;
   line-height: 1;
 
@@ -295,19 +295,20 @@
 }
 
 .reservation-button:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 
   border-color: #d62828;
+
   background: linear-gradient(
     135deg,
-    #e63838,
-    #d62828
+    #d62828,
+    #a91f1f
   );
 
   color: #ffffff;
 
   box-shadow:
-    0 18px 40px rgba(214, 40, 40, 0.32);
+    0 16px 35px rgba(214, 40, 40, 0.24);
 }
 
 .reservation-button:hover::after {
@@ -315,7 +316,7 @@
 }
 
 .reservation-button:focus-visible {
-  outline: 3px solid #ffffff;
+  outline: 3px solid #ffe066;
   outline-offset: 5px;
 }
 
@@ -331,7 +332,7 @@
 
   .reservation-content {
     padding: 42px 23px;
-    border-radius: 27px;
+    border-radius: 26px;
   }
 
   .reservation-content h2 {
@@ -342,6 +343,7 @@
   .reservation-text {
     margin-bottom: 32px;
     font-size: 15px;
+    line-height: 1.8;
   }
 
   .opening-hours {
@@ -375,6 +377,7 @@
   }
 
   .hours-row {
+    gap: 8px;
     font-size: 12px;
   }
 }
@@ -387,5 +390,9 @@
   .reservation-button::after {
     transition: none;
   }
-}
 
+  .hours-row:hover,
+  .reservation-button:hover {
+    transform: none;
+  }
+}

@@ -1,46 +1,24 @@
+
 import { useState } from "react";
 import "./Contact.css";
 
 function Contact() {
+  const whatsappNumber = "2349011445400";
+
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
+    phone: "",
     message: "",
   });
-
-  const whatsappNumber = "2349011445400";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const whatsappMessage = `
-Hello TableMannas,
-
-I would like to make an enquiry.
-
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-
-Message:
-${formData.message}
-    `.trim();
-
-    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
-
-    window.open(whatsappLink, "_blank");
   };
 
   const openWhatsApp = () => {
@@ -54,197 +32,183 @@ ${formData.message}
     );
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const message = `
+Hello TableMannas,
+
+My name is ${formData.name}.
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+    `;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+      "_blank"
+    );
+  };
+
   return (
-    <section id="contact" className="contact-section">
+    <section className="contact-section" id="contact">
       <div className="contact-container">
-
-        {/* CONTACT INFORMATION */}
-        <div className="contact-info">
-
-          <span className="contact-label">
-            Get In Touch
-          </span>
+        {/* Section Heading */}
+        <div className="contact-heading">
+          <span className="contact-subtitle">GET IN TOUCH</span>
 
           <h2>
-            We'd Love
-            <br />
-            <span>To Hear From You.</span>
+            Let's Start a <span>Conversation</span>
           </h2>
 
-          <p className="contact-intro">
-            Whether you're planning a visit, making an enquiry,
-            or simply want to know more about us, we're always
-            happy to hear from you.
+          <p>
+            Have a question, reservation request, or special enquiry?
+            We'd love to hear from you.
           </p>
-
-          <div className="contact-details">
-
-            <div className="contact-detail">
-              <span className="detail-number">01</span>
-
-              <div>
-                <span className="detail-title">
-                  Visit Us
-                </span>
-
-                <p>
-                  Head Office: Table Mannas Building, Uniosun School Road, Off Shaha Market, Okebaale, Osogbo. 
-                  <br />
-                  Osun State, Nigeria
-                </p>
-              </div>
-            </div>
-
-            <div className="contact-detail">
-              <span className="detail-number">02</span>
-
-              <div>
-                <span className="detail-title">
-                  Call Us
-                </span>
-
-                <a href="tel:+2349011445400">
-                  +234 901 144 5400
-                </a>
-              </div>
-            </div>
-
-            <div className="contact-detail">
-              <span className="detail-number">03</span>
-
-              <div>
-                <span className="detail-title">
-                  Opening Hours
-                </span>
-
-                <p>
-                  Monday — Friday
-                  <br />
-                  8:00 AM — 3:00 AM
-                </p>
-
-              </div>
-            </div>
-
-          </div>
-
-          {/* WHATSAPP BUTTON */}
-          <button
-            type="button"
-            className="whatsapp-button"
-            onClick={openWhatsApp}
-          >
-            <span className="whatsapp-icon">
-              ↗
-            </span>
-
-            <span>
-              Chat With Us On WhatsApp
-            </span>
-          </button>
-
         </div>
 
-        {/* CONTACT FORM */}
-        <div className="contact-form-wrapper">
+        {/* Contact Content */}
+        <div className="contact-content">
+          {/* Contact Information */}
+          <div className="contact-info">
+            <h3>Contact Information</h3>
 
-          <div className="form-heading">
-            <span>Send A Message</span>
+            <p className="contact-intro">
+              Reach out to us for reservations, enquiries, or more
+              information about our services.
+            </p>
 
-            <h3>
-              Let's Start
-              <br />
-              A Conversation.
-            </h3>
-          </div>
-
-          <form
-            className="contact-form"
-            onSubmit={handleSubmit}
-          >
-
-            <div className="form-row">
-
-              <div className="form-group">
-                <label htmlFor="name">
-                  Your Name
-                </label>
-
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Enter your name"
-                  required
-                />
+            <div className="contact-detail">
+              <div className="detail-icon">
+                <span className="material-icons">location_on</span>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="phone">
-                  Phone Number
-                </label>
+              <div>
+                <h4 className="detail-title">Our Location</h4>
+                <p className="detail-text">
+                  Table Mannas Building
+                </p>
+              </div>
+            </div>
 
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                  required
-                />
+            <div className="contact-detail">
+              <div className="detail-icon">
+                <span className="material-icons">phone</span>
               </div>
 
+              <div>
+                <h4 className="detail-title">Phone Number</h4>
+                <p className="detail-number">
+                  +234 901 144 5400
+                </p>
+              </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="email">
-                Email Address
-              </label>
+            <div className="contact-detail">
+              <div className="detail-icon">
+                <span className="material-icons">email</span>
+              </div>
 
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">
-                Your Message
-              </label>
-
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="5"
-                placeholder="How can we help you?"
-                required
-              ></textarea>
+              <div>
+                <h4 className="detail-title">Email Address</h4>
+                <p className="detail-text">
+                  Contact us for enquiries
+                </p>
+              </div>
             </div>
 
             <button
-              type="submit"
-              className="contact-submit"
+              type="button"
+              className="whatsapp-button"
+              onClick={openWhatsApp}
             >
-              <span>Send Message</span>
-              <span>↗</span>
+              <span className="material-icons">chat</span>
+              Chat With Us on WhatsApp
             </button>
+          </div>
 
-          </form>
+          {/* Contact Form */}
+          <div className="contact-form-wrapper">
+            <h3>Send Us a Message</h3>
 
+            <p className="form-intro">
+              Fill in the details below and we'll get back to you.
+            </p>
+
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="contact-name">Full Name</label>
+
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="contact-email">Email Address</label>
+
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    placeholder="Enter your email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="contact-phone">Phone Number</label>
+
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="contact-message">Your Message</label>
+
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  placeholder="How can we help you?"
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <button type="submit" className="submit-button">
+                Send Message
+                <span className="material-icons">arrow_forward</span>
+              </button>
+            </form>
+          </div>
         </div>
-
       </div>
     </section>
   );
 }
 
 export default Contact;
+
