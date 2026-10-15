@@ -1,11 +1,31 @@
-
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import './Add.css';
+import "./Add.css";
 import "./Menu.css";
 
-const CART_STORAGE_KEY = "theMixCart";
+const localImages = import.meta.glob("./assets/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 
+const imageFiles = Object.keys(localImages).reduce((result, path) => {
+  const filename = path.split("/").pop().toLowerCase();
+  const extension = filename.split(".").pop();
+
+  if (["jpg", "jpeg", "png", "webp", "avif"].includes(extension)) {
+    result[filename] = localImages[path];
+  }
+
+  return result;
+}, {});
+
+const getLocalImage = (imagePath) => {
+  const filename = imagePath.split("/").pop().toLowerCase();
+  return imageFiles[filename] || "";
+};
+
+const CART_STORAGE_KEY = "theMixCart";
 const WHATSAPP_NUMBER = "2349011445400";
 
 function Menu() {
@@ -13,329 +33,101 @@ function Menu() {
   const [showCart, setShowCart] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
 
-  /* ================================
-     MENU DATA
-     Replace example image URLs with
-     the restaurant's actual photos.
-  ================================= */
-
   const categories = [
     {
       name: "Food",
       items: [
-        {
-          name: "Jollof Rice",
-          price: 500,
-          image:
-            "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Fried Rice",
-          price: 500,
-          image:
-            "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Coconut Rice",
-          price: 700,
-          image:
-            "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Native Rice",
-          price: 700,
-          image:
-            "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Jollof Pasta",
-          price: 500,
-          image:
-            "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format&fit=crop",
-        },
+        { name: "Jollof Rice", price: 500, image: "/assets/jollof-rice.jpg" },
+        { name: "Fried Rice", price: 500, image: "/assets/fried-rice.jpg" },
+        { name: "Coconut Rice", price: 700, image: "/assets/coconut-rice.jpg" },
+        { name: "Native Rice", price: 700, image: "/assets/white-rice.jpg" },
+        { name: "Jollof Pasta", price: 500, image: "/assets/jollof-pasta.jpg" },
       ],
     },
-
     {
       name: "Pepper Soup & Grills",
       items: [
-        {
-          name: "Catfish Pepper Soup",
-          price: 7000,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Beef Pepper Soup",
-          price: 5000,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Chicken Pepper Soup",
-          price: 5000,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Grilled Chicken",
-          price: 1000,
-          image:
-            "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Barbecue",
-          price: 7000,
-          image:
-            "https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop",
-        },
+        { name: "Catfish Pepper Soup", price: 7000, image: "/assets/catfish-pepper-soup.jpg" },
+        { name: "Beef Pepper Soup", price: 5000, image: "/assets/beef-pepper-soup.jpg" },
+        { name: "Chicken Pepper Soup", price: 5000, image: "/assets/chicken-pepper-soup.jpg" },
+        { name: "Grilled Chicken", price: 1000, image: "/assets/grilled-chicken.jpg" },
+        { name: "Barbecue", price: 7000, image: "/assets/barbecue.jpg" },
       ],
     },
-
     {
       name: "Swallow & Soups",
       items: [
-        {
-          name: "Semo",
-          price: 2700,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Pounded Yam",
-          price: 2700,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Eba",
-          price: 2700,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Amala",
-          price: 2700,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Egusi Soup",
-          price: 6000,
-          image:
-            "https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop",
-        },
+        { name: "Semo", price: 2700, image: "/assets/swallow.jpg" },
+        { name: "Pounded Yam", price: 2700, image: "/assets/swallow.jpg" },
+        { name: "Eba", price: 2700, image: "/assets/eba.jpg" },
+        { name: "Amala", price: 2700, image: "/assets/swallow-fish.jpg" },
+        { name: "Egusi Soup", price: 6000, image: "/assets/egusi-soup.jpg" },
       ],
     },
-
     {
       name: "Shawarma & Fast Food",
       items: [
-        {
-          name: "Double Sausage Shawarma",
-          price: 3000,
-          image:
-            "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Single Sausage Shawarma",
-          price: 2800,
-          image:
-            "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Shawarma + Extra Beef",
-          price: 3500,
-          image:
-            "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Shawarma + Grilled Chicken",
-          price: 3500,
-          image:
-            "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Burger",
-          price: 3500,
-          image:
-            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop",
-        },
+        { name: "Double Sausage Shawarma", price: 3000, image: "/assets/shawarma.jpg" },
+        { name: "Single Sausage Shawarma", price: 2800, image: "/assets/shawarma.jpg" },
+        { name: "Shawarma + Extra Beef", price: 3500, image: "/assets/shawarma.jpg" },
+        { name: "Shawarma + Grilled Chicken", price: 3500, image: "/assets/shawarma.jpg" },
+        { name: "Burger", price: 3500, image: "/assets/burger.jpg" },
       ],
     },
-
     {
       name: "Pastries & Snacks",
       items: [
-        {
-          name: "Meat Pie",
-          price: 1000,
-          image:
-            "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Chicken Pie",
-          price: 1200,
-          image:
-            "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Egg Roll",
-          price: 700,
-          image:
-            "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Sausage Roll",
-          price: 700,
-          image:
-            "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Croissant",
-          price: 700,
-          image:
-            "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&auto=format&fit=crop",
-        },
+        { name: "Meat Pie", price: 1000, image: "/assets/meat-pie.jpg" },
+        { name: "Chicken Pie", price: 1200, image: "/assets/chicken-pie.jpg" },
+        { name: "Egg Roll", price: 700, image: "/assets/egg-roll.jpg" },
+        { name: "Sausage Roll", price: 700, image: "/assets/frank-roll.jpg" },
+        { name: "Croissant", price: 700, image: "/assets/croissant.jpg" },
       ],
     },
-
     {
       name: "Cakes & Desserts",
       items: [
-        {
-          name: "Fruit Cake",
-          price: 1500,
-          image:
-            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Red Velvet Cake",
-          price: 1500,
-          image:
-            "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Chocolate Cake",
-          price: 1500,
-          image:
-            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Celebration Cake",
-          price: 10000,
-          image:
-            "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Ice Cream",
-          price: 500,
-          image:
-            "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&auto=format&fit=crop",
-        },
+        { name: "Fruit Cake", price: 1500, image: "/assets/fruit-cake.jpg" },
+        { name: "Red Velvet Cake", price: 1500, image: "/assets/red-velvet-cake.jpg" },
+        { name: "Chocolate Cake", price: 1500, image: "/assets/chocolate-cake.jpg" },
+        { name: "Celebration Cake", price: 10000, image: "/assets/celebration-cake.jpg" },
+        { name: "Ice Cream", price: 500, image: "/assets/ice-cream.jpg" },
       ],
     },
-
     {
       name: "Restaurant Drinks",
       items: [
-        {
-          name: "Water",
-          price: 300,
-          image:
-            "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Pet Coke",
-          price: 600,
-          image:
-            "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Pet Fanta",
-          price: 600,
-          image:
-            "https://images.unsplash.com/photo-1624517452488-04869289c4ca?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Zobo",
-          price: 500,
-          image:
-            "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Pure Heaven",
-          price: 2500,
-          image:
-            "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500&auto=format&fit=crop",
-        },
+        { name: "Water", price: 300, image: "/assets/water.jpg" },
+        { name: "Pet Coke", price: 600, image: "/assets/coke.jpg" },
+        { name: "Pet Fanta", price: 600, image: "/assets/fanta.jpg" },
+        { name: "Zobo", price: 500, image: "/assets/zobo.jpg" },
+        { name: "Pure Heaven", price: 2500, image: "/assets/pure-heaven.jpg" },
       ],
     },
-
     {
       name: "Lounge Drinks",
       items: [
-        {
-          name: "Energy Drinks",
-          price: 0,
-          unavailablePrice: true,
-          image:
-            "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Soft Drinks & Water",
-          price: 0,
-          unavailablePrice: true,
-          image:
-            "https://images.unsplash.com/photo-1532634896-26909d0d4b81?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Juices & Mixers",
-          price: 0,
-          unavailablePrice: true,
-          image:
-            "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&auto=format&fit=crop",
-        },
+        { name: "Energy Drinks", price: 0, unavailablePrice: true, image: "/assets/fearless.jpg" },
+        { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "/assets/water.jpg" },
+        { name: "Juices & Mixers", price: 0, unavailablePrice: true, image: "/assets/pulpy.jpg" },
       ],
     },
-
     {
       name: "Pizza",
       items: [
-        {
-          name: "Small Pizza",
-          price: 4000,
-          image:
-            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Medium Pizza",
-          price: 6000,
-          image:
-            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop",
-        },
-        {
-          name: "Large Pizza",
-          price: 10000,
-          image:
-            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop",
-        },
+        { name: "Small Pizza", price: 4000, image: "/assets/pizza.jpg" },
+        { name: "Medium Pizza", price: 6000, image: "/assets/pizza.jpg" },
+        { name: "Large Pizza", price: 10000, image: "/assets/pizza.jpg" },
       ],
     },
   ];
 
-  /* ================================
-     LOAD CART FROM LOCAL STORAGE
-  ================================= */
-
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
-
       if (!savedCart) return [];
 
       const parsedCart = JSON.parse(savedCart);
-
       return Array.isArray(parsedCart) ? parsedCart : [];
     } catch (error) {
       console.error("Could not load cart:", error);
@@ -351,42 +143,23 @@ function Menu() {
     notes: "",
   });
 
-  /* ================================
-     SAVE CART
-  ================================= */
-
   useEffect(() => {
     try {
-      localStorage.setItem(
-        CART_STORAGE_KEY,
-        JSON.stringify(cart)
-      );
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
     } catch (error) {
       console.error("Could not save cart:", error);
     }
   }, [cart]);
 
-  /* ================================
-     LOCK PAGE SCROLL
-  ================================= */
-
   useEffect(() => {
     const drawerIsOpen = showCart || showCheckout;
 
-    if (drawerIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = drawerIsOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
   }, [showCart, showCheckout]);
-
-  /* ================================
-     NAVBAR CART TOGGLE
-  ================================= */
 
   useEffect(() => {
     const handleToggleCart = () => {
@@ -397,16 +170,9 @@ function Menu() {
     window.addEventListener("toggleCart", handleToggleCart);
 
     return () => {
-      window.removeEventListener(
-        "toggleCart",
-        handleToggleCart
-      );
+      window.removeEventListener("toggleCart", handleToggleCart);
     };
   }, []);
-
-  /* ================================
-     CATEGORY TOGGLE
-  ================================= */
 
   const toggleCategory = (index) => {
     setOpenCategory((current) =>
@@ -414,16 +180,8 @@ function Menu() {
     );
   };
 
-  /* ================================
-     FORMAT PRICE
-  ================================= */
-
   const formatPrice = (price) =>
     `₦${price.toLocaleString("en-NG")}`;
-
-  /* ================================
-     ADD TO CART
-  ================================= */
 
   const addToCart = (item) => {
     if (item.unavailablePrice) return;
@@ -457,10 +215,6 @@ function Menu() {
     setShowCheckout(false);
   };
 
-  /* ================================
-     QUANTITY CONTROLS
-  ================================= */
-
   const increaseQuantity = (itemName) => {
     setCart((currentCart) =>
       currentCart.map((item) =>
@@ -483,10 +237,6 @@ function Menu() {
     );
   };
 
-  /* ================================
-     REMOVE AND CLEAR CART
-  ================================= */
-
   const removeFromCart = (itemName) => {
     setCart((currentCart) =>
       currentCart.filter((item) => item.name !== itemName)
@@ -496,10 +246,6 @@ function Menu() {
   const clearCart = () => {
     setCart([]);
   };
-
-  /* ================================
-     CART TOTALS
-  ================================= */
 
   const cartCount = cart.reduce(
     (total, item) => total + item.quantity,
@@ -511,10 +257,6 @@ function Menu() {
     0
   );
 
-  /* ================================
-     CUSTOMER INPUT
-  ================================= */
-
   const handleCustomerChange = (e) => {
     const { name, value } = e.target;
 
@@ -524,20 +266,12 @@ function Menu() {
     }));
   };
 
-  /* ================================
-     CHECKOUT
-  ================================= */
-
   const handleCheckout = () => {
     if (cart.length === 0) return;
 
     setShowCart(false);
     setShowCheckout(true);
   };
-
-  /* ================================
-     PLACE ORDER THROUGH WHATSAPP
-  ================================= */
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
@@ -583,7 +317,6 @@ function Menu() {
 
     orderMessage += "CUSTOMER DETAILS\n";
     orderMessage += "----------------------\n";
-
     orderMessage += `Name: ${customer.name}\n`;
     orderMessage += `Phone: ${customer.phone}\n`;
     orderMessage += `Order Type: ${customer.orderType}\n`;
@@ -607,13 +340,7 @@ function Menu() {
     window.open(whatsappUrl, "_blank");
 
     setShowCheckout(false);
-
-    // Keep the cart saved until the order is handled.
   };
-
-  /* ================================
-     CART DRAWER
-  ================================= */
 
   const cartDrawer =
     showCart &&
@@ -733,10 +460,6 @@ function Menu() {
       </div>,
       document.body
     );
-
-  /* ================================
-     CHECKOUT DRAWER
-  ================================= */
 
   const checkoutDrawer =
     showCheckout &&
@@ -891,10 +614,6 @@ function Menu() {
       document.body
     );
 
-  /* ================================
-     MAIN MENU
-  ================================= */
-
   return (
     <>
       <section id="menu" className="menu-preview">
@@ -940,7 +659,7 @@ function Menu() {
                     <div className="menu-item" key={item.name}>
                       <img
                         className="menu-item-image"
-                        src={item.image}
+                        src={getLocalImage(item.image)}
                         alt={item.name}
                         loading="lazy"
                         onError={(e) => {
@@ -989,4 +708,3 @@ function Menu() {
 }
 
 export default Menu;
-

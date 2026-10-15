@@ -405,7 +405,8 @@
   z-index: 9998;
   display: flex;
   justify-content: flex-end;
-  background: rgba(25, 21, 16, 0.58);
+  background: white;
+  color: black;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   animation: menuOverlayIn 0.25s ease;
@@ -675,8 +676,8 @@
   padding: 14px 18px;
   border: 1px solid var(--red);
   border-radius: 10px;
-  background: var(--red);
-  color: #FFFFFF;
+  background: green;
+  color: black;
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;

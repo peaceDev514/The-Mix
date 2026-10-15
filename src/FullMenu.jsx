@@ -1,23 +1,147 @@
-
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./FullMenu.css";
 
+// Load local images from src/assets.
+// Supports JPG, JPEG, PNG, WEBP and AVIF files.
+const localImages = import.meta.glob("./assets/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const imageFiles = Object.keys(localImages).reduce((result, path) => {
+  const filename = path.split("/").pop().toLowerCase();
+  const extension = filename.split(".").pop();
+
+  if (["jpg", "jpeg", "png", "webp", "avif"].includes(extension)) {
+    result[filename] = localImages[path];
+  }
+
+  return result;
+}, {});
+
 const CART_STORAGE_KEY = "theMixCart";
 const WHATSAPP_NUMBER = "2349011445400";
 
+// Return only the requested local image.
+// If it doesn't exist, return an empty string.
+const getLocalImage = (filename) => {
+  if (!filename) return "";
+  return imageFiles[filename.toLowerCase()] || "";
+};
+
+const itemImages = {
+  "restaurant-drinks": [
+    "hollandia.jpg", "exotic.jpg", "active.jpg", "active.jpg",
+    "hollandia.jpg", "exotic.jpg", "coke.jpg", "fanta.jpg",
+    "coke.jpg", "fanta.jpg", "monster.jpg", "pulpy.jpg",
+    "berry-blast.jpg", "pure-heaven.jpg", "vita-milk.jpg",
+    "water.jpg", "malt.jpg", "fayrouz.jpg", "climax.jpg",
+    "predator.jpg", "fearless.jpg", "viju-wheat.jpg",
+    "viju-chocolate.jpg", "viju-milk.jpg", "nutri-milk.jpg",
+    "zobo.jpg", "zobo.jpg", "smoove.jpg", "sprite.jpg",
+  ],
+  food: [
+    "jollof-rice.jpg", "fried-rice.jpg", "rice-and-beans.jpg",
+    "ewa.jpg", "white-rice.jpg", "coconut-rice.jpg",
+    "white-rice.jpg", "suya-rice.jpg", "jollof-pasta.jpg",
+    "stir-fry-pasta.jpg", "plantain-egg-sauce.jpg",
+    "yamarita.jpg", "noodles-egg-sauce.jpg", "plantain.jpg",
+    "beef.jpg", "fish.jpg", "chicken.jpg", "chicken.jpg",
+    "chicken.jpg", "turkey.jpg", "turkey.jpg", "turkey.jpg",
+    "turkey.jpg", "ponmo.jpg", "moinmoin.jpg", "salad.jpg",
+    "gizzard.jpg", "asun.jpg", "asun.jpg",
+    "barbecue.jpg", "grilled-chicken.jpg",
+  ],
+  "pepper-soup": [
+    "catfish-pepper-soup.jpg", "beef-pepper-soup.jpg",
+    "chicken-pepper-soup.jpg", "turkey-pepper-soup.jpg",
+    "goat-meat-pepper-soup.jpg",
+  ],
+  swallow: [
+    "swallow.jpg", "egusi-soup.jpg", "swallow-m.jpg",
+    "swallow-fish.jpg", "swallow-m.jpg",
+    "swallow-m.jpg", "egusi-soup.jpg",
+    "okra-soup.jpg",
+  ],
+  shawarma: [
+    "shawarma.jpg", "shawarma.jpg",
+    "shawarma.jpg", "shawarma.jpg",
+    "shawarma.jpg", "shawarma.jpg",
+  ],
+  bread: [
+    "butter-bread.jpg", "butter-bread.jpg", "fruit-bread.jpg",
+    "chocolate-bread.jpg", "chocolate-bread.jpg",
+    "sardine-bread.jpg", "sardine-bread.jpg", "banana-bread.jpg",
+    "coconut-bread.jpg", "coconut-bread.jpg", "burger.jpg",
+  ],
+  snacks: [
+    "egg-roll.jpg", "doughnut.jpg", "jam-doughnut.jpg",
+    "jam-doughnut.jpg", "frank-roll.jpg", "frank-roll.jpg",
+    "meat-pie.jpg", "chicken-pie.jpg", "burger.jpg",
+    "croissant.jpg", "cookies.jpg", "cookies.jpg", "honey-roll.jpg",
+    "pancake.jpg", "chinchin.jpg", "popcorn.jpg",
+  ],
+  cake: [
+    "fruit-cake.jpg", "banana-cake.jpg", "coconut-bread.jpg",
+    "foil-cake.jpg", "red-velvet-cake.jpg", "chocolate-cake.jpg",
+    "celebration-cake.jpg",
+  ],
+  "ice-cream": [
+    "sachet-ice-cream.jpg", "ice-cream.jpg", "ice-cream.jpg",
+    "ice-cream.jpg", "ice-cream.jpg", "go-slo.jpg",
+    "ice-cream.jpg", "ice-cream.jpg",
+    "frosty-byte.jpg", "frosty-byte.jpg", "frosty-byte.jpg",
+  ],
+  pizza: [
+    "pizza.jpg", "pizza.jpg", "pizza.jpg",
+  ],
+};
+
 const menuCategories = [
+  {
+    id: "restaurant-drinks",
+    title: "Restaurant Drinks",
+    subtitle: "Refreshing drinks & beverages",
+    emoji: "🥤",
+    items: [
+      ["Big Hollandia Yoghourt", "₦2,500"],
+      ["Big Exotic", "₦2,500"],
+      ["Big Active", "₦2,500"],
+      ["Small Active", "₦1,200"],
+      ["Small Hollandia", "₦1,200"],
+      ["Small Exotic", "₦1,200"],
+      ["Pet Coke", "₦600"],
+      ["Pet Fanta", "₦600"],
+      ["Can Coke", "₦800"],
+      ["Can Fanta", "₦800"],
+      ["Monster", "₦2,000"],
+      ["Pulpy", "₦2,000"],
+      ["Berry Blast", "₦2,000"],
+      ["Pure Heaven", "₦2,500"],
+      ["Vita Milk", "₦3,000"],
+      ["Water", "₦300"],
+      ["Can Malt", "₦1,000"],
+      ["Fayrouz", "₦1,000"],
+      ["Climax", "₦1,000"],
+      ["Predator", "₦700"],
+      ["Fearless", "₦700"],
+      ["Viju Wheat", "₦1,500"],
+      ["Viju Chocolate", "₦1,500"],
+      ["Viju Milk", "₦800"],
+      ["Nutri Milk", "₦800"],
+      ["Zobo", "₦500"],
+      ["Zobo", "₦1,000"],
+      ["Smoove", "₦600"],
+      ["Sprite", "₦600"],
+    ],
+  },
   {
     id: "food",
     title: "Food Menu",
     subtitle: "Traditional favourites & everyday meals",
     emoji: "🍛",
-    images: [
-      "photo-1512621776951-a57141f2eefd",
-      "photo-1546069901-ba9599a7e63c",
-      "photo-1512058564366-18510be2db19",
-      "photo-1516684732162-798a0062be99",
-    ],
     items: [
       ["Jollof Rice", "₦500"],
       ["Fried Rice", "₦500"],
@@ -57,10 +181,6 @@ const menuCategories = [
     title: "Pepper Soup",
     subtitle: "Rich, spicy & freshly prepared",
     emoji: "🌶️",
-    images: [
-      "photo-1547592180-85f173990554",
-      "photo-1547592166-23ac45744acd",
-    ],
     items: [
       ["Catfish Pepper Soup", "₦7,000 / ₦10,000"],
       ["Beef Pepper Soup", "₦5,000 / ₦7,000"],
@@ -74,10 +194,6 @@ const menuCategories = [
     title: "Swallow Menu",
     subtitle: "Classic Nigerian swallow combinations",
     emoji: "🥣",
-    images: [
-      "photo-1547592180-85f173990554",
-      "photo-1547592166-23ac45744acd",
-    ],
     items: [
       ["Swallow", "Semo / Pando / Eba / Amala"],
       ["Soup", "Egusi / Vegetable / Egusi & Okra"],
@@ -94,10 +210,6 @@ const menuCategories = [
     title: "Shawarma Menu",
     subtitle: "Freshly prepared & generously filled",
     emoji: "🌯",
-    images: [
-      "photo-1529006557810-274b9b2fc783",
-      "photo-1565299624946-b28f40a0ae38",
-    ],
     items: [
       ["Double Sausage", "₦3,000"],
       ["Single Sausage", "₦2,800"],
@@ -112,10 +224,6 @@ const menuCategories = [
     title: "Bread Menu",
     subtitle: "Freshly baked favourites",
     emoji: "🍞",
-    images: [
-      "photo-1509440159596-0249088772ff",
-      "photo-1549931319-a545dcf3bc73",
-    ],
     items: [
       ["Butter Bread", "₦1,000"],
       ["Butter Bread — Small Size", "₦600"],
@@ -135,11 +243,6 @@ const menuCategories = [
     title: "Snacks Menu",
     subtitle: "Perfect for a quick bite",
     emoji: "🥐",
-    images: [
-      "photo-1509440159596-0249088772ff",
-      "photo-1555507036-ab1f4038808a",
-      "photo-1555507036-ab1f4038808a",
-    ],
     items: [
       ["Egg Roll", "₦700"],
       ["Doughnut", "₦600"],
@@ -164,10 +267,6 @@ const menuCategories = [
     title: "Cake Menu",
     subtitle: "Sweet treats for every occasion",
     emoji: "🍰",
-    images: [
-      "photo-1578985545062-69928b1d9587",
-      "photo-1578985545062-69928b1d9587",
-    ],
     items: [
       ["Fruit Cake", "₦1,500"],
       ["Banana Cake", "₦1,500"],
@@ -183,10 +282,6 @@ const menuCategories = [
     title: "Ice Cream Menu",
     subtitle: "Cool, creamy & delicious",
     emoji: "🍦",
-    images: [
-      "photo-1563805042-7684c019e1cb",
-      "photo-1497034825429-c343d7c6a68f",
-    ],
     items: [
       ["Sachet Ice Cream", "₦500"],
       ["120ml", "₦750"],
@@ -206,68 +301,20 @@ const menuCategories = [
     title: "Pizza Menu",
     subtitle: "Freshly baked & made to order",
     emoji: "🍕",
-    images: [
-      "photo-1513104890138-7c749659a591",
-      "photo-1571407970349-bc81e7e96d47",
-    ],
     items: [
       ["Small Pizza", "₦4,000"],
       ["Medium Pizza", "₦6,000"],
       ["Large Pizza", "₦10,000"],
     ],
   },
-  {
-    id: "restaurant-drinks",
-    title: "Restaurant Drinks",
-    subtitle: "Refreshing drinks & beverages",
-    emoji: "🥤",
-    images: [
-      "photo-1544145945-f90425340c7e",
-      "photo-1513558161293-cdaf765edfd7",
-    ],
-    items: [
-      ["Big Hollandia Yoghourt", "₦2,500"],
-      ["Big Exotic", "₦2,500"],
-      ["Big Active", "₦2,500"],
-      ["Small Active", "₦1,200"],
-      ["Small Hollandia", "₦1,200"],
-      ["Small Exotic", "₦1,200"],
-      ["Pet Coke", "₦600"],
-      ["Pet Fanta", "₦600"],
-      ["Can Coke", "₦800"],
-      ["Can Fanta", "₦800"],
-      ["Monster", "₦2,000"],
-      ["Pulpy", "₦2,000"],
-      ["Berry Blast", "₦2,000"],
-      ["Pure Heaven", "₦2,500"],
-      ["Vita Milk", "₦3,000"],
-      ["Water", "₦300"],
-      ["Can Malt", "₦1,000"],
-      ["Fayrouz", "₦1,000"],
-      ["Climax", "₦1,000"],
-      ["Predator", "₦700"],
-      ["Fearless", "₦700"],
-      ["Viju Wheat", "₦1,500"],
-      ["Viju Chocolate", "₦1,500"],
-      ["Viju Milk", "₦800"],
-      ["Nutri Milk", "₦800"],
-      ["Zobo", "₦500"],
-      ["Zobo", "₦1,000"],
-      ["Smoove", "₦600"],
-      ["Sprite", "₦600"],
-    ],
-  },
 ];
 
-/* =========================================
-   HELPERS
-========================================= */
+/* HELPERS */
 
 function getPrices(priceText) {
   if (!priceText) return [];
 
   const matches = priceText.match(/₦\s*[\d,]+/g);
-
   if (!matches) return [];
 
   return matches.map((value) =>
@@ -280,14 +327,11 @@ function formatPrice(amount) {
 }
 
 function getItemImage(category, index) {
-  const photo = category.images[index % category.images.length];
-
-  return `https://images.unsplash.com/${photo}?auto=format&fit=crop&w=480&q=80`;
+  const filenames = itemImages[category.id] || [];
+  return getLocalImage(filenames[index]);
 }
 
-/* =========================================
-   COMPONENT
-========================================= */
+/* COMPONENT */
 
 function FullMenu() {
   const [search, setSearch] = useState("");
@@ -485,7 +529,6 @@ Thank you.
         <div className="full-menu-cart-bar">
           <div className="cart-bar-left">
             <span className="full-menu-cart-icon">🛒</span>
-
             <div>
               <strong>Your Cart</strong>
               <small>
@@ -525,11 +568,12 @@ Thank you.
                 key={category.id}
               >
                 <div className="category-heading">
-                  <div className="category-icon">{category.emoji}</div>
+                  <div className="category-icon">
+                    {category.emoji}
+                  </div>
 
                   <div className="category-title">
                     <span>{String(index + 1).padStart(2, "0")}</span>
-
                     <div>
                       <p>{category.subtitle}</p>
                       <h2>{category.title}</h2>
@@ -549,22 +593,38 @@ Thank you.
                         className="full-menu-item"
                         key={`${category.id}-${name}-${price}-${itemIndex}`}
                       >
-                        <img
+                        {image ? (
+                          <img
+                            className="full-menu-item-image"
+                            src={image}
+                            alt={name}
+                            loading="lazy"
+                            onError={(event) => {
+                              event.currentTarget.style.display = "none";
+                              const placeholder =
+                                event.currentTarget.nextElementSibling;
+
+                              if (placeholder) {
+                                placeholder.style.display = "flex";
+                              }
+                            }}
+                          />
+                        ) : null}
+
+                        <div
                           className="full-menu-item-image"
-                          src={image}
-                          alt={name}
-                          loading="lazy"
-                          onError={(event) => {
-                            event.currentTarget.style.visibility = "hidden";
-                          }}
-                        />
+                          role="img"
+                          aria-label={`${name} image placeholder`}
+                          style={{ display: image ? "none" : "flex" }}
+                        >
+                          {category.emoji}
+                        </div>
 
                         <div className="full-menu-item-name">
                           <h3>{name}</h3>
                         </div>
 
                         <div className="menu-dots" aria-hidden="true" />
-
                         <div className="full-menu-price">{price}</div>
 
                         {isOrderable ? (
@@ -711,11 +771,17 @@ Thank you.
               ×
             </button>
 
-            <span className="price-selector-label">SELECT OPTION</span>
+            <span className="price-selector-label">
+              SELECT OPTION
+            </span>
 
-            <h2 id="price-selector-title">{priceSelector.name}</h2>
+            <h2 id="price-selector-title">
+              {priceSelector.name}
+            </h2>
 
-            <p>Choose the price option you want to add to your cart.</p>
+            <p>
+              Choose the price option you want to add to your cart.
+            </p>
 
             <div className="price-selector-options">
               {priceSelector.prices.map((price, index) => (
@@ -738,4 +804,3 @@ Thank you.
 }
 
 export default FullMenu;
-
