@@ -672,11 +672,13 @@ function Menu() {
                       <div className="menu-item-details">
                         <h4>{item.name}</h4>
 
-                        <span className="menu-price">
+                        <a href="/menu" style={{ textDecoration: "none" }}>
+			  <span className="menu-price">
                           {item.unavailablePrice
                             ? "See Full Menu"
                             : formatPrice(item.price)}
                         </span>
+			  </a>
                       </div>
 
                       {!item.unavailablePrice && (
