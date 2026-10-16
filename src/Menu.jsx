@@ -95,6 +95,15 @@ function Menu() {
       ],
     },
     {
+      name: "Lounge Drinks",
+      items: [
+        { name: "Energy Drinks", price: 0, unavailablePrice: true, image: "/assets/fearless.jpg" },
+        { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "/assets/water.jpg" },
+        { name: "Juices & Mixers", price: 0, unavailablePrice: true, image: "/assets/pulpy.jpg" },
+      ],
+    },
+
+    {
       name: "Restaurant Drinks",
       items: [
         { name: "Water", price: 300, image: "/assets/water.jpg" },
@@ -104,14 +113,7 @@ function Menu() {
         { name: "Pure Heaven", price: 2500, image: "/assets/pure-heaven.jpg" },
       ],
     },
-    {
-      name: "Lounge Drinks",
-      items: [
-        { name: "Energy Drinks", price: 0, unavailablePrice: true, image: "/assets/fearless.jpg" },
-        { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "/assets/water.jpg" },
-        { name: "Juices & Mixers", price: 0, unavailablePrice: true, image: "/assets/pulpy.jpg" },
-      ],
-    },
+
     {
       name: "Pizza",
       items: [
