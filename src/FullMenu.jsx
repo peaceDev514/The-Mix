@@ -35,7 +35,7 @@ const itemImages = {
   "restaurant-drinks": [
     "hollandia.jpg", "exotic.jpg", "active.jpg", "active.jpg",
     "hollandia.jpg", "exotic.jpg", "coke.jpg", "fanta.jpg",
-    "coke.jpg", "fanta.jpg", "monster.jpg", "pulpy.jpg",
+    "can-coke.jpg", "fanta.jpg", "monster.jpg", "pulpy.jpg",
     "berry-blast.jpg", "pure-heaven.jpg", "vita-milk.jpg",
     "water.jpg", "malt.jpg", "fayrouz.jpg", "climax.jpg",
     "predator.jpg", "fearless.jpg", "viju-wheat.jpg",
@@ -45,7 +45,7 @@ const itemImages = {
   food: [
     "jollof-rice.jpg", "fried-rice.jpg", "rice-and-beans.jpg",
     "ewa.jpg", "white-rice.jpg", "coconut-rice.jpg",
-    "white-rice.jpg", "suya-rice.jpg", "jollof-pasta.jpg",
+    "native-rice.jpg", "suya-rice.jpg", "jollof-pasta.jpg",
     "stir-fry-pasta.jpg", "plantain-egg-sauce.jpg",
     "yamarita.jpg", "noodles-egg-sauce.jpg", "plantain.jpg",
     "beef.jpg", "fish.jpg", "chicken.jpg", "chicken.jpg",
@@ -78,7 +78,7 @@ const itemImages = {
   ],
   snacks: [
     "egg-roll.jpg", "doughnut.jpg", "jam-doughnut.jpg",
-    "jam-doughnut.jpg", "frank-roll.jpg", "frank-roll.jpg",
+    "milky-doughnut.jpg", "frank-roll.jpg", "frank-roll.jpg",
     "meat-pie.jpg", "chicken-pie.jpg", "burger.jpg",
     "croissant.jpg", "cookies.jpg", "cookies.jpg", "honey-roll.jpg",
     "pancake.jpg", "chinchin.jpg", "popcorn.jpg",
@@ -91,7 +91,7 @@ const itemImages = {
   "ice-cream": [
     "sachet-ice-cream.jpg", "ice-cream.jpg", "ice-cream.jpg",
     "ice-cream.jpg", "ice-cream.jpg", "go-slo.jpg",
-    "ice-cream.jpg", "ice-cream.jpg",
+    "vanilla-fantasy.jpg", "chocolate-fantasy.jpg",
     "frosty-byte.jpg", "frosty-byte.jpg", "frosty-byte.jpg",
   ],
   pizza: [
@@ -151,7 +151,7 @@ const menuCategories = [
       ["Coconut Rice", "₦700"],
       ["Native Rice", "₦700"],
       ["Suya Rice", "₦700"],
-      ["Jollof Pasta", "₦500"],
+      ["Jollof Pasta", "₦700"],
       ["Stir Fry Pasta", "₦500"],
       ["Plantain with Egg Sauce", "₦2,800"],
       ["Yamarita with Egg Sauce", "₦2,800"],
