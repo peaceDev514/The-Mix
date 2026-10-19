@@ -34,6 +34,15 @@ function Menu() {
   const [showCheckout, setShowCheckout] = useState(false);
 
   const categories = [
+	{
+      name: "Lounge Drinks",
+      items: [
+        { name: "Energy Drinks", price: 0, unavailablePrice: true, image: "/assets/fearless.jpg" },
+	      { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "/assets/water.jpg" },
+	      { name: "Juices & Mixers", price: 0, unavailablePrice: true, image: "/assets/pulpy.jpg" },
+      ],
+    },
+
     {
       name: "Food",
       items: [
@@ -92,14 +101,6 @@ function Menu() {
         { name: "Chocolate Cake", price: 1500, image: "/assets/chocolate-cake.jpg" },
         { name: "Celebration Cake", price: 10000, image: "/assets/celebration-cake.jpg" },
         { name: "Ice Cream", price: 500, image: "/assets/ice-cream.jpg" },
-      ],
-    },
-    {
-      name: "Lounge Drinks",
-      items: [
-        { name: "Energy Drinks", price: 0, unavailablePrice: true, image: "/assets/fearless.jpg" },
-        { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "/assets/water.jpg" },
-        { name: "Juices & Mixers", price: 0, unavailablePrice: true, image: "/assets/pulpy.jpg" },
       ],
     },
 
