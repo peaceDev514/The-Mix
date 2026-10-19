@@ -92,7 +92,7 @@ const itemImages = {
     "sachet-ice-cream.jpg", "ice-cream.jpg", "ice-cream.jpg",
     "ice-cream.jpg", "ice-cream.jpg", "go-slo.jpg",
     "vanilla-fantasy.jpg", "chocolate-fantasy.jpg",
-    "frosty-byte.jpg", "frosty-byte.jpg", "frosty-byte.jpg",
+    "frosty-bite.jpg", "frosty-bite.jpg", "frosty-bite.jpg",
   ],
   pizza: [
     "pizza.jpg", "pizza.jpg", "pizza.jpg",
