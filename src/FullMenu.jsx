@@ -102,7 +102,7 @@ const itemImages = {
 const menuCategories = [
   {
     id: "restaurant-drinks",
-    title: "Restaurant Drinks",
+    title: "Lounge Drinks",
     subtitle: "Refreshing drinks & beverages",
     emoji: "🥤",
     items: [
