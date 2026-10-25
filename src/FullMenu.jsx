@@ -23,7 +23,7 @@ const WHATSAPP_NUMBER = "2349011445400";
 
 // ALL NEW DRINKS FETCH ONLINE - WORKING LINKS
 const onlineDrinkImages = {
-  "trophy.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "trophy.jpg": "./assets/trophy.jpg",
   "gulder.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "budweiser.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "legend-big.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -35,11 +35,11 @@ const onlineDrinkImages = {
   "33-beer.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "smirnoff-ice.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
   "can-desperado.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "heineken-big.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "heineken-big.jpg": "heineken.jpg",
   "stout-medium.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "heineken-can.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "heineken-can.jpg": "heineken.jpg",
   "goldberg-can.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "smirnoff-can.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "smirnoff-can.jpg": "./assets/smirnoff-can.jpg",
   "desperado-can.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "origin-can.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "can-beer.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -49,20 +49,20 @@ const onlineDrinkImages = {
   "predator.jpg": "https://images.pexels.com/photos/11958257/pexels-photo-11958257.jpeg?auto=compress&cs=tinysrgb&w=400",
   "fearless.jpg": "https://images.pexels.com/photos/11958257/pexels-photo-11958257.jpeg?auto=compress&cs=tinysrgb&w=400",
   "black-bullet.jpg": "https://images.pexels.com/photos/11958257/pexels-photo-11958257.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "blue-bullet.jpg": "https://images.pexels.com/photos/11958257/pexels-photo-11958257.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "blue-bullet.jpg": "./assets/blue-bullet.jpg",
   "climax.jpg": "https://images.pexels.com/photos/11958257/pexels-photo-11958257.jpeg?auto=compress&cs=tinysrgb&w=400",
   "active.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
   "5alive-pulpy.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
   "5alive-berry-blast.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "maltina.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "maltina.jpg": "malt.jpg",
   "fayrouz.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
   "hollandia.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
   "pure-heaven.jpg": "https://images.pexels.com/photos/14733471/pexels-photo-14733471.jpeg?auto=compress&cs=tinysrgb&w=400",
   "water.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "pet-coke.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "pet-fanta.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "pet-coke.jpg": "coke.jpg",
+  "pet-fanta.jpg": "fanta.jpg",
   "vita-milk.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "can-malt.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "can-malt.jpg": "malt.jpg",
   "coke.jpg": "https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=400",
   "fanta.jpg": "https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=400",
   "sprite.jpg": "https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -99,18 +99,18 @@ const onlineDrinkImages = {
   "best-whisky.jpg": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400",
   "best-whisky-small.jpg": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400",
   "best-whisky-mini.jpg": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "smirnoff-x1.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "smirnoff-x1-medium.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "smirnoff-x1-small.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "ciroc.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "magic-moment.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "gordons-medium.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "gordons-big.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "gordons-small.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "smirnoff-x1.jpg": "smirnoff-ice.jpg",
+  "smirnoff-x1-medium.jpg": "smirnoff-ice.jpg",
+  "smirnoff-x1-small.jpg": "smirnoff-ice.jpg",
+  "ciroc.jpg": "ciroc.jpg",
+  "magic-moment.jpg": "magic-moment.jpg",
+  "gordons-medium.jpg": "gordon.jpg",
+  "gordons-big.jpg": "gordon.jpg",
+  "gordons-small.jpg": "gordon.jpg",
   "skirt-gin.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "lords-gin.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "lords-gin-medium.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "lords-gin-small.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "lords-gin.jpg": "lord-gin.jpg",
+  "lords-gin-medium.jpg": "lord-gin.jpg",
+  "lords-gin-small.jpg": "lord-gin.jpg",
   "imperial-small.jpg": "https://images.pexels.com/photos/6818473/pexels-photo-6818473.jpeg?auto=compress&cs=tinysrgb&w=400",
   "moet.jpg": "https://images.pexels.com/photos/14733471/pexels-photo-14733471.jpeg?auto=compress&cs=tinysrgb&w=400",
   "martini-rose.jpg": "https://images.pexels.com/photos/14733471/pexels-photo-14733471.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -142,15 +142,30 @@ const onlineDrinkImages = {
   "xman-small.jpg": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400",
   "xman-big.jpg": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400",
   "red-juice.jpg": "https://images.pexels.com/photos/6163275/pexels-photo-6163275.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "shisha.jpg": "https://images.pexels.com/photos/32715858/pexels-photo-32715858.jpeg?auto=compress&cs=tinysrgb&w=400",
-  "shisha-premium.jpg": "https://images.pexels.com/photos/32715858/pexels-photo-32715858.jpeg?auto=compress&cs=tinysrgb&w=400",
+  "shisha.jpg": "shisha.jpg",
+  "shisha-premium.jpg": "shisha.jpg",
 };
 
 const getLocalImage = (filename) => {
   if (!filename) return "";
-  const lower = filename.toLowerCase();
+  const lower = filename.toLowerCase().trim();
+
+  // 1. Direct local file
   if (imageFiles[lower]) return imageFiles[lower];
-  if (onlineDrinkImages[lower]) return onlineDrinkImages[lower];
+
+  // 2. Online link or alias
+  if (onlineDrinkImages[lower]) {
+    const value = onlineDrinkImages[lower];
+    // if value is http -> return http link
+    if (value.startsWith("http")) return value;
+    // if value is another filename like "smirnoff-ice.jpg" -> get that file
+    const aliasLower = value.toLowerCase().trim();
+    if (imageFiles[aliasLower]) return imageFiles[aliasLower];
+    if (onlineDrinkImages[aliasLower] && onlineDrinkImages[aliasLower].startsWith("http")) {
+      return onlineDrinkImages[aliasLower];
+    }
+  }
+
   const drinkName = lower.replace('.jpg','').replace(/-/g,' ').toUpperCase();
   return `https://via.placeholder.com/400x600/111/fff.png?text=${encodeURIComponent(drinkName)}`;
 };
@@ -164,8 +179,8 @@ const itemImages = {
     "origin-can.jpg", "can-beer.jpg", "monster.jpg", "power-horse.jpg", "red-bull.jpg",
     "predator.jpg", "fearless.jpg", "black-bullet.jpg", "blue-bullet.jpg", "climax.jpg",
     "active.jpg", "5alive-pulpy.jpg", "5alive-berry-blast.jpg", "maltina.jpg",
-    "fayrouz.jpg", "hollandia.jpg", "pure-heaven.jpg", "water.jpg", "pet-coke.jpg",
-    "pet-fanta.jpg", "vita-milk.jpg", "can-malt.jpg", "coke.jpg", "fanta.jpg",
+    "fayrouz.jpg", "hollandia.jpg", "pure-heaven.jpg", "water.jpg", "coke.jpg",
+    "./assets/fanta.jpg", "vita-milk.jpg", "can-malt.jpg", "coke.jpg", "fanta.jpg",
     "sprite.jpg", "pulpy.jpg", "berry-blast.jpg", "exotic.jpg", "smoove.jpg",
     "zobo.jpg", "nutri-milk.jpg", "viju-milk.jpg", "viju-chocolate.jpg", "viju-wheat.jpg",
     "4th-street.jpg", "baron.jpg", "cranberry-wine.jpg", "four-cousins.jpg",
@@ -175,7 +190,7 @@ const itemImages = {
     "jameson-green.jpg", "jameson-black.jpg", "glenfiddich-15.jpg", "imperial-blue.jpg",
     "best-whisky.jpg", "best-whisky-small.jpg", "best-whisky-mini.jpg", "smirnoff-x1.jpg",
     "smirnoff-x1-medium.jpg", "smirnoff-x1-small.jpg", "ciroc.jpg", "magic-moment.jpg",
-    "gordons-medium.jpg", "gordons-big.jpg", "gordons-small.jpg", "skirt-gin.jpg",
+    "gordons-medium.jpg", "./assets/gordon.jpg", "gordons-small.jpg", "skirt-gin.jpg",
     "lords-gin.jpg", "lords-gin-medium.jpg", "lords-gin-small.jpg", "imperial-small.jpg",
     "moet.jpg", "martini-rose.jpg", "andre-rose.jpg", "belaire.jpg", "ace-of-spades.jpg",
     "hennessy-xo.jpg", "hennessy-vsop.jpg", "hennessy-vs.jpg", "hennessy-mini.jpg",
