@@ -37,8 +37,8 @@ function Menu() {
 	{
       name: "Lounge Drinks",
       items: [
-        { name: "Energy Drinks", price: 0, unavailablePrice: true, image: "/assets/fearless.jpg" },
-	      { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "/assets/water.jpg" },
+        { name: "Lounge Drinks", price: 0, unavailablePrice: true, image: "magic-moment.jpg" },
+	      { name: "Soft Drinks & Water", price: 0, unavailablePrice: true, image: "sprite.jpg" },
 	      { name: "Juices & Mixers", price: 0, unavailablePrice: true, image: "/assets/pulpy.jpg" },
       ],
     },
