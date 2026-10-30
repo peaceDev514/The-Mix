@@ -23,7 +23,7 @@ const WHATSAPP_NUMBER = "2349011445400";
 
 // ALL NEW DRINKS FETCH ONLINE - WORKING LINKS
 const onlineDrinkImages = {
-  "trophy.jpg": "./assets/trophy.jpg",
+  "trophy.jpg": "trophy-1.jpg",
   "gulder.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "budweiser.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
   "legend-big.jpg": "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -172,7 +172,7 @@ const getLocalImage = (filename) => {
 
 const itemImages = {
   "restaurant-drinks": [
-    "trophy.jpg", "gulder.jpg", "budweiser.jpg", "legend-big.jpg", "goldberg.jpg",
+    "trophy-1.jpg", "gulder.jpg", "budweiser.jpg", "legend-big.jpg", "goldberg.jpg",
     "tiger-beer.jpg", "desperado.jpg", "star-radler.jpg", "origin-beer.jpg", "33-beer.jpg",
     "smirnoff-ice.jpg", "can-desperado.jpg", "heineken-big.jpg", "stout-medium.jpg",
     "heineken-can.jpg", "goldberg-can.jpg", "smirnoff-can.jpg", "desperado-can.jpg",
